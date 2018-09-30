@@ -14,8 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
-
+    
     @IBAction func signIn(_ sender: Any) {
         performSegue(withIdentifier: "signIn", sender: self)
     }

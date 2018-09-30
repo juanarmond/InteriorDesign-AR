@@ -12,12 +12,11 @@ class CreateAccountViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
     
 
-    @IBAction func signIn(_ sender: Any) {
+    @IBAction func logIn(_ sender: Any) {
         performSegue(withIdentifier: "signIn", sender: self)
     }
     /*
