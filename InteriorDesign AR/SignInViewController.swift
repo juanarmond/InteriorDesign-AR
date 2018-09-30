@@ -1,5 +1,5 @@
 //
-//  CreateAccountViewController.swift
+//  SignInViewController.swift
 //  InteriorDesign AR
 //
 //  Created by Juan Armond on 30/09/2018.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateAccountViewController: UIViewController {
+class SignInViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,9 +17,6 @@ class CreateAccountViewController: UIViewController {
     }
     
 
-    @IBAction func signIn(_ sender: Any) {
-        performSegue(withIdentifier: "signIn", sender: self)
-    }
     /*
     // MARK: - Navigation
 

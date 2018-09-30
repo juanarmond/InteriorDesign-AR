@@ -16,5 +16,11 @@ class ViewController: UIViewController {
     }
 
 
+    @IBAction func signIn(_ sender: Any) {
+        performSegue(withIdentifier: "signIn", sender: self)
+    }
+    @IBAction func createAccount(_ sender: Any) {
+        performSegue(withIdentifier: "createAccount", sender: self)
+    }
 }
 

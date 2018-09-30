@@ -15,7 +15,8 @@
 		31A65C4121592624006CA768 /* InteriorDesign_ARTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A65C4021592624006CA768 /* InteriorDesign_ARTests.swift */; };
 		31A65C4C21592624006CA768 /* InteriorDesign_ARUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A65C4B21592624006CA768 /* InteriorDesign_ARUITests.swift */; };
 		31A65C5A21592C31006CA768 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31A65C5921592C31006CA768 /* GoogleService-Info.plist */; };
-		31B925A82160C050004EEB56 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B925A72160C050004EEB56 /* CreateAccountViewController.swift */; };
+		31B925AC2160C7D1004EEB56 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B925AB2160C7D1004EEB56 /* CreateAccountViewController.swift */; };
+		31B925AE2160D354004EEB56 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B925AD2160D354004EEB56 /* SignInViewController.swift */; };
 		4346C43EC4D2E7EFC4C06B09 /* Pods_InteriorDesign_ARUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 106ED5350BF525A0FBDD294C /* Pods_InteriorDesign_ARUITests.framework */; };
 		77E390DFAEC67230728345EF /* Pods_InteriorDesign_ARTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B78FF4BD2F8B579A5D85E5D7 /* Pods_InteriorDesign_ARTests.framework */; };
 		820AD0CDBF0E036AC0CFF7BD /* Pods_InteriorDesign_AR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BCA23553F885AA31B782B99 /* Pods_InteriorDesign_AR.framework */; };
@@ -57,7 +58,8 @@
 		31A65C4B21592624006CA768 /* InteriorDesign_ARUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteriorDesign_ARUITests.swift; sourceTree = "<group>"; };
 		31A65C4D21592624006CA768 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31A65C5921592C31006CA768 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		31B925A72160C050004EEB56 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		31B925AB2160C7D1004EEB56 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		31B925AD2160D354004EEB56 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		3AC7C59092E8C0FD62C3EF8E /* Pods-InteriorDesign ARUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InteriorDesign ARUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InteriorDesign ARUITests/Pods-InteriorDesign ARUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		49E285601D6CAF3102B08BC3 /* Pods-InteriorDesign ARTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InteriorDesign ARTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-InteriorDesign ARTests/Pods-InteriorDesign ARTests.release.xcconfig"; sourceTree = "<group>"; };
 		B78FF4BD2F8B579A5D85E5D7 /* Pods_InteriorDesign_ARTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InteriorDesign_ARTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,11 +124,12 @@
 				31A65C2B21592620006CA768 /* AppDelegate.swift */,
 				31A65C2D21592620006CA768 /* ViewController.swift */,
 				31A65C2F21592620006CA768 /* Main.storyboard */,
-				31B925A72160C050004EEB56 /* CreateAccountViewController.swift */,
 				31A65C3221592624006CA768 /* Assets.xcassets */,
 				31A65C3421592624006CA768 /* LaunchScreen.storyboard */,
 				31A65C3721592624006CA768 /* Info.plist */,
 				31A65C5921592C31006CA768 /* GoogleService-Info.plist */,
+				31B925AB2160C7D1004EEB56 /* CreateAccountViewController.swift */,
+				31B925AD2160D354004EEB56 /* SignInViewController.swift */,
 			);
 			path = "InteriorDesign AR";
 			sourceTree = "<group>";
@@ -417,7 +420,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31B925A82160C050004EEB56 /* CreateAccountViewController.swift in Sources */,
+				31B925AE2160D354004EEB56 /* SignInViewController.swift in Sources */,
+				31B925AC2160C7D1004EEB56 /* CreateAccountViewController.swift in Sources */,
 				31A65C2E21592620006CA768 /* ViewController.swift in Sources */,
 				31A65C2C21592620006CA768 /* AppDelegate.swift in Sources */,
 			);
