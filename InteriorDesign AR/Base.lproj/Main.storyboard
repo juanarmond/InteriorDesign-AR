@@ -239,7 +239,52 @@ Get Inspire, Shop products and Find Professionals</string>
                     <view key="view" contentMode="scaleToFill" id="eGG-9s-Pzn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wdh-Z4-dq4">
+                                <rect key="frame" x="153.33333333333334" y="172" width="107.66666666666666" height="39.666666666666657"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="33"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49D-Nf-j7E">
+                                <rect key="frame" x="116" y="393.66666666666669" width="187" height="39"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Sign in">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="JY2-Ok-LQT">
+                                <rect key="frame" x="57" y="242" width="300" height="97"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Email" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aPg-At-FeP">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" textContentType="email"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gOa-3o-pNr">
+                                        <rect key="frame" x="0.0" y="67" width="300" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="sAw-1r-WZE"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wdh-Z4-dq4" firstAttribute="top" secondItem="uTC-XL-Tq4" secondAttribute="top" constant="152" id="1ZM-w6-GcQ"/>
+                            <constraint firstItem="JY2-Ok-LQT" firstAttribute="top" secondItem="wdh-Z4-dq4" secondAttribute="bottom" constant="30.333333333333343" id="Dw9-CT-gwl"/>
+                            <constraint firstItem="wdh-Z4-dq4" firstAttribute="centerX" secondItem="eGG-9s-Pzn" secondAttribute="centerX" id="Js3-aP-7Bs"/>
+                            <constraint firstItem="49D-Nf-j7E" firstAttribute="top" secondItem="JY2-Ok-LQT" secondAttribute="bottom" constant="54.666666666666686" id="KME-hw-18J"/>
+                            <constraint firstItem="uTC-XL-Tq4" firstAttribute="trailing" secondItem="49D-Nf-j7E" secondAttribute="trailing" constant="111" id="Wfy-oZ-G0l"/>
+                            <constraint firstItem="JY2-Ok-LQT" firstAttribute="leading" secondItem="uTC-XL-Tq4" secondAttribute="leading" constant="57" id="jIK-q5-ABD"/>
+                            <constraint firstItem="49D-Nf-j7E" firstAttribute="leading" secondItem="uTC-XL-Tq4" secondAttribute="leading" constant="116" id="qEc-VE-apz"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="uTC-XL-Tq4"/>
                     </view>
                 </viewController>
