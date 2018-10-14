@@ -185,9 +185,12 @@ Get Inspire, Shop products and Find Professionals</string>
                                 <state key="normal" title="Create your account">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="createAccount:" destination="dsx-Sg-OMJ" eventType="touchUpInside" id="0QX-PN-xh5"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6PH-WE-3un">
-                                <rect key="frame" x="148" y="292" width="119.66666666666666" height="40"/>
+                                <rect key="frame" x="147.33333333333334" y="292" width="119.66666666666666" height="40"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="33"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -225,6 +228,10 @@ Get Inspire, Shop products and Find Professionals</string>
                         <viewLayoutGuide key="safeArea" id="CPb-Lt-EpK"/>
                     </view>
                     <connections>
+                        <outlet property="emailField" destination="YIo-Oj-av7" id="izG-16-Kue"/>
+                        <outlet property="fNameField" destination="TD2-uY-cw4" id="HnG-a4-3Lr"/>
+                        <outlet property="lNameField" destination="DYe-e2-LXP" id="PGb-qA-MfM"/>
+                        <outlet property="passwordField" destination="zcy-5N-Hb4" id="x6a-6q-GAv"/>
                         <segue destination="grd-S3-Q90" kind="presentation" identifier="signIn" id="Iek-Rn-iVG"/>
                     </connections>
                 </viewController>
