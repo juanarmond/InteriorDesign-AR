@@ -18,6 +18,7 @@ class CreateAccountViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     
     var db: Firestore!
+    var em: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,20 +37,39 @@ class CreateAccountViewController: UIViewController {
     
     @IBAction func createAccount(_ sender: Any) {
         if let fName = self.fNameField.text, let lName = self.lNameField.text,let email = self.emailField.text, let password = self.passwordField.text{
-            var ref: DocumentReference? = nil
-            ref = db.collection("users").addDocument(data: [
-                "first": fName,
-                "last": lName,
-                "email": email,
-                "password": password
-            ]) { err in
-                if let err = err {
-                    print("Error adding document: \(err)")
-                } else {
-                    print("Document added with ID: \(ref!.documentID)")
-                    self.performSegue(withIdentifier: "account", sender: self)
+            if fName.isEmpty||fName == "First Name"||lName.isEmpty||lName == "Last Name"||email.isEmpty||email == "Email"||password.isEmpty||password == "password"{
+                print ("Please fill all fields")
+            } else{
+                let collection = db.collection("users")
+                collection
+                    .whereField("email", isEqualTo: email).getDocuments() { (querySnapshot, err) in
+                        for document in (querySnapshot?.documents)!{
+                            self.em = document.data()["email"] as? String
+                            print (self.em)
+                        }
+                        if let err = err {
+                            print("Error getting documents: \(err)")
+                        } else if self.em != email{
+                            var ref: DocumentReference? = nil
+                            ref = self.db.collection("users").addDocument(data: [
+                                "first": fName,
+                                "last": lName,
+                                "email": email,
+                                "password": password
+                            ]) { err in
+                                if let err = err {
+                                    print("Error adding document: \(err)")
+                                } else {
+                                    print("Document added with ID: \(ref!.documentID)")
+                                    self.performSegue(withIdentifier: "account", sender: self)
+                                }
+                            }
+                        }else{
+                            print ("Email already in the database")
+                        }
                 }
             }
+            
         }
     }
     
