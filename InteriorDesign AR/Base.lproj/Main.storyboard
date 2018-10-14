@@ -33,7 +33,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="signIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UMX-Io-xkV"/>
+                                    <action selector="signIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tcg-rf-cR9"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WvR-Ev-XkT">
@@ -233,11 +233,41 @@ Get Inspire, Shop products and Find Professionals</string>
                         <outlet property="lNameField" destination="DYe-e2-LXP" id="PGb-qA-MfM"/>
                         <outlet property="passwordField" destination="zcy-5N-Hb4" id="x6a-6q-GAv"/>
                         <segue destination="grd-S3-Q90" kind="presentation" identifier="signIn" id="Iek-Rn-iVG"/>
+                        <segue destination="chM-TF-5hX" kind="presentation" identifier="account" id="u4C-Zn-V9U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cuB-zE-GO3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="902.89855072463774" y="-432.06521739130437"/>
+            <point key="canvasLocation" x="903" y="-433"/>
+        </scene>
+        <!--Account View Controller-->
+        <scene sceneID="Rbq-OD-60K">
+            <objects>
+                <viewController id="chM-TF-5hX" customClass="AccountViewController" customModule="InteriorDesign_AR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Wh6-2K-xqJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hg-G5-YKe">
+                                <rect key="frame" x="186" y="169" width="64" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hy0-Zl-4al">
+                                <rect key="frame" x="184" y="386" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="F67-ug-49c"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jEy-X4-wch" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1701" y="-36"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="4oC-H3-2Uf">
@@ -260,40 +290,52 @@ Get Inspire, Shop products and Find Professionals</string>
                                 <state key="normal" title="Sign in">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="signIn:" destination="grd-S3-Q90" eventType="touchUpInside" id="sEi-nv-9SY"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="JY2-Ok-LQT">
-                                <rect key="frame" x="57" y="242" width="300" height="97"/>
+                                <rect key="frame" x="57" y="241.66666666666663" width="300" height="97"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Email" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aPg-At-FeP">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Email" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aPg-At-FeP">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" textContentType="email"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gOa-3o-pNr">
-                                        <rect key="frame" x="0.0" y="67" width="300" height="30"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gOa-3o-pNr">
+                                        <rect key="frame" x="0.0" y="67.000000000000028" width="300" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="aPg-At-FeP" secondAttribute="trailing" id="AsE-tm-yQX"/>
+                                    <constraint firstItem="aPg-At-FeP" firstAttribute="leading" secondItem="JY2-Ok-LQT" secondAttribute="leading" id="Uht-H0-nEH"/>
+                                    <constraint firstItem="gOa-3o-pNr" firstAttribute="leading" secondItem="JY2-Ok-LQT" secondAttribute="leading" id="c9u-et-35A"/>
+                                    <constraint firstAttribute="trailing" secondItem="gOa-3o-pNr" secondAttribute="trailing" id="gQY-1Z-4tr"/>
                                     <constraint firstAttribute="width" constant="300" id="sAw-1r-WZE"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="wdh-Z4-dq4" firstAttribute="top" secondItem="uTC-XL-Tq4" secondAttribute="top" constant="152" id="1ZM-w6-GcQ"/>
-                            <constraint firstItem="JY2-Ok-LQT" firstAttribute="top" secondItem="wdh-Z4-dq4" secondAttribute="bottom" constant="30.333333333333343" id="Dw9-CT-gwl"/>
-                            <constraint firstItem="wdh-Z4-dq4" firstAttribute="centerX" secondItem="eGG-9s-Pzn" secondAttribute="centerX" id="Js3-aP-7Bs"/>
-                            <constraint firstItem="49D-Nf-j7E" firstAttribute="top" secondItem="JY2-Ok-LQT" secondAttribute="bottom" constant="54.666666666666686" id="KME-hw-18J"/>
-                            <constraint firstItem="uTC-XL-Tq4" firstAttribute="trailing" secondItem="49D-Nf-j7E" secondAttribute="trailing" constant="111" id="Wfy-oZ-G0l"/>
-                            <constraint firstItem="JY2-Ok-LQT" firstAttribute="leading" secondItem="uTC-XL-Tq4" secondAttribute="leading" constant="57" id="jIK-q5-ABD"/>
-                            <constraint firstItem="49D-Nf-j7E" firstAttribute="leading" secondItem="uTC-XL-Tq4" secondAttribute="leading" constant="116" id="qEc-VE-apz"/>
+                            <constraint firstItem="wdh-Z4-dq4" firstAttribute="top" secondItem="uTC-XL-Tq4" secondAttribute="top" constant="152" id="G3j-gN-Q9O"/>
+                            <constraint firstItem="JY2-Ok-LQT" firstAttribute="top" secondItem="wdh-Z4-dq4" secondAttribute="bottom" constant="30" id="KLt-2q-lVZ"/>
+                            <constraint firstItem="49D-Nf-j7E" firstAttribute="leading" secondItem="uTC-XL-Tq4" secondAttribute="leading" constant="116" id="Ycb-lA-Xrh"/>
+                            <constraint firstItem="uTC-XL-Tq4" firstAttribute="trailing" secondItem="49D-Nf-j7E" secondAttribute="trailing" constant="111" id="ZkQ-7B-igB"/>
+                            <constraint firstItem="49D-Nf-j7E" firstAttribute="top" secondItem="JY2-Ok-LQT" secondAttribute="bottom" constant="55" id="jlJ-4F-sgU"/>
+                            <constraint firstItem="wdh-Z4-dq4" firstAttribute="centerX" secondItem="JY2-Ok-LQT" secondAttribute="centerX" id="mFA-tc-2QT"/>
+                            <constraint firstItem="wdh-Z4-dq4" firstAttribute="centerX" secondItem="eGG-9s-Pzn" secondAttribute="centerX" id="qxF-fT-Vcf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uTC-XL-Tq4"/>
                     </view>
+                    <connections>
+                        <outlet property="emailField" destination="aPg-At-FeP" id="9kV-BQ-RbW"/>
+                        <outlet property="passwordField" destination="gOa-3o-pNr" id="MUz-S9-RSa"/>
+                        <segue destination="chM-TF-5hX" kind="presentation" identifier="account" id="ogt-7Q-rpe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Ea-yk-lQW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -306,5 +348,6 @@ Get Inspire, Shop products and Find Professionals</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Iek-Rn-iVG"/>
+        <segue reference="ogt-7Q-rpe"/>
     </inferredMetricsTieBreakers>
 </document>
