@@ -25,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // [END default_firestore]
         print(db) // silence warning
         
+        var avatarGalery = Storage.storage()
+        
         return true
     }
 

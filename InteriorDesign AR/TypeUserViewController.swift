@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 
+
 class TypeUserViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var nameField: UILabel!
@@ -68,8 +69,113 @@ class TypeUserViewController: UIViewController, UIImagePickerControllerDelegate,
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         avatar.image = image
+        let rot = imageOrientation(image)
+        //Upload Image do Cloud
+//        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let storageRef = Storage.storage().reference().child("user/\(String(id))")
+        guard let imageData = rot.jpegData(compressionQuality: 0.50) else { return }
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpg"
+        let uploadTask = storageRef.putData(imageData, metadata: metaData)
+        // Add a progress observer to an upload task
+        let observer = uploadTask.observe(.progress) { snapshot in
+            // A progress event occured
+            let percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount)
+                / Double(snapshot.progress!.totalUnitCount)
+            print(percentComplete)
+        }
+        uploadTask.observe(.success) { snapshot in
+            // Upload completed successfully
+            print("Upload Sucess")
+        }
+        
+        uploadTask.observe(.failure) { snapshot in
+            if let error = snapshot.error as? NSError {
+                switch (StorageErrorCode(rawValue: error.code)!) {
+                case .objectNotFound:
+                    // File doesn't exist
+                    print("File doesn't exist")
+                    break
+                case .unauthorized:
+                    // User doesn't have permission to access file
+                    print("User doesn't have permission to access file")
+                    break
+                case .cancelled:
+                    // User canceled the upload
+                    print("User canceled the upload")
+                    break
+                    
+                    /* ... */
+                    
+                case .unknown:
+                    // Unknown error occurred, inspect the server response
+                    print("Unknown error")
+                    break
+                default:
+                    // A separate error occurred. This is a good place to retry the upload.
+                    print("separate error occurred")
+                    break
+                }
+            }
+        }
+        
+        // don't delete
         picker.dismiss(animated: true, completion: nil)
     }
+    
+    //Fix image orientation
+    func imageOrientation(_ src:UIImage)->UIImage {
+        if src.imageOrientation == UIImage.Orientation.up {
+            return src
+        }
+        var transform: CGAffineTransform = CGAffineTransform.identity
+        switch src.imageOrientation {
+        case UIImage.Orientation.down, UIImage.Orientation.downMirrored:
+            transform = transform.translatedBy(x: src.size.width, y: src.size.height)
+            transform = transform.rotated(by: CGFloat(M_PI))
+            break
+        case UIImage.Orientation.left, UIImage.Orientation.leftMirrored:
+            transform = transform.translatedBy(x: src.size.width, y: 0)
+            transform = transform.rotated(by: CGFloat(M_PI_2))
+            break
+        case UIImage.Orientation.right, UIImage.Orientation.rightMirrored:
+            transform = transform.translatedBy(x: 0, y: src.size.height)
+            transform = transform.rotated(by: CGFloat(-M_PI_2))
+            break
+        case UIImage.Orientation.up, UIImage.Orientation.upMirrored:
+            break
+        }
+        
+        switch src.imageOrientation {
+        case UIImage.Orientation.upMirrored, UIImage.Orientation.downMirrored:
+            transform.translatedBy(x: src.size.width, y: 0)
+            transform.scaledBy(x: -1, y: 1)
+            break
+        case UIImage.Orientation.leftMirrored, UIImage.Orientation.rightMirrored:
+            transform.translatedBy(x: src.size.height, y: 0)
+            transform.scaledBy(x: -1, y: 1)
+        case UIImage.Orientation.up, UIImage.Orientation.down, UIImage.Orientation.left, UIImage.Orientation.right:
+            break
+        }
+        
+        let ctx:CGContext = CGContext(data: nil, width: Int(src.size.width), height: Int(src.size.height), bitsPerComponent: (src.cgImage)!.bitsPerComponent, bytesPerRow: 0, space: (src.cgImage)!.colorSpace!, bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)!
+        
+        ctx.concatenate(transform)
+        
+        switch src.imageOrientation {
+        case UIImage.Orientation.left, UIImage.Orientation.leftMirrored, UIImage.Orientation.right, UIImage.Orientation.rightMirrored:
+            ctx.draw(src.cgImage!, in: CGRect(x: 0, y: 0, width: src.size.height, height: src.size.width))
+            break
+        default:
+            ctx.draw(src.cgImage!, in: CGRect(x: 0, y: 0, width: src.size.width, height: src.size.height))
+            break
+        }
+        
+        let cgimg:CGImage = ctx.makeImage()!
+        let img:UIImage = UIImage(cgImage: cgimg)
+        
+        return img
+    }// Fix image rotation code below
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
