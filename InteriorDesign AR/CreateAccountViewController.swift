@@ -61,7 +61,7 @@ class CreateAccountViewController: UIViewController {
                                 "first": fName,
                                 "last": lName,
                                 "email": email,
-                                "password": password
+                                "password": password, "accType": "Client"
                             ]) { err in
                                 if let err = err {
                                     print("Error adding document: \(err)")

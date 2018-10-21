@@ -15,10 +15,12 @@ class TypeUserViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var nameField: UILabel!
     @IBOutlet weak var emailField: UILabel!
     @IBOutlet weak var avatar: UIImageView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     var id: String!
     var db: Firestore!
     var photo: UIImage!
+    
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +75,7 @@ class TypeUserViewController: UIViewController, UIImagePickerControllerDelegate,
         //Upload Image do Cloud
 //        guard let uid = Auth.auth().currentUser?.uid else { return }
         let storageRef = Storage.storage().reference().child("user/\(String(id))")
-        guard let imageData = rot.jpegData(compressionQuality: 0.50) else { return }
+        guard let imageData = rot.jpegData(compressionQuality: 0.25) else { return }
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpg"
         let uploadTask = storageRef.putData(imageData, metadata: metaData)
@@ -181,8 +183,26 @@ class TypeUserViewController: UIViewController, UIImagePickerControllerDelegate,
         picker.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func accType(_ sender: Any) {
 
+    
+    @IBAction func accType(_ sender: Any) {
+        
+        let user = db.collection("users").document(id)
+        
+        switch segmentedControl.selectedSegmentIndex
+        {
+        case 0:
+            user.updateData(["accType": "Client"])
+            print("Client")
+        case 1:
+            user.updateData(["accType": "Professional"])
+            print("Professional")
+        case 2:
+            user.updateData(["accType": "Company"])
+            print("Company")
+        default:
+            break
+        }
     }
 
     @IBAction func done(_ sender: Any) {

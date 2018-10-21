@@ -374,6 +374,7 @@ Get Inspire, Shop products and Find Professionals</string>
                         <outlet property="avatar" destination="aQD-LX-DQH" id="eve-Jb-Moj"/>
                         <outlet property="emailField" destination="qNd-UO-ywT" id="H8r-pS-krR"/>
                         <outlet property="nameField" destination="eZ6-My-PIi" id="y44-ed-ePf"/>
+                        <outlet property="segmentedControl" destination="Ckd-YX-bv6" id="jdv-v4-IQ0"/>
                         <segue destination="chM-TF-5hX" kind="presentation" identifier="account" id="rCD-hQ-wsX"/>
                     </connections>
                 </viewController>
