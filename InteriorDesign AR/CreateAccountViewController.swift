@@ -19,13 +19,13 @@ class CreateAccountViewController: UIViewController {
     
     var db: Firestore!
     var em: String!
+    var id: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         // [START setup]
         let settings = FirestoreSettings()
-        
         Firestore.firestore().settings = settings
         // [END setup]
         db = Firestore.firestore()
@@ -33,6 +33,12 @@ class CreateAccountViewController: UIViewController {
     
     @IBAction func logIn(_ sender: Any) {
         performSegue(withIdentifier: "signIn", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let TypeUserViewController = segue.destination as? TypeUserViewController {
+            TypeUserViewController.id = id
+        }
     }
     
     @IBAction func createAccount(_ sender: Any) {
@@ -60,8 +66,9 @@ class CreateAccountViewController: UIViewController {
                                 if let err = err {
                                     print("Error adding document: \(err)")
                                 } else {
+                                    self.id = String(describing: ref!.documentID)
                                     print("Document added with ID: \(ref!.documentID)")
-                                    self.performSegue(withIdentifier: "account", sender: self)
+                                    self.performSegue(withIdentifier: "typeUser", sender: self)
                                 }
                             }
                         }else{
@@ -72,7 +79,6 @@ class CreateAccountViewController: UIViewController {
             
         }
     }
-    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         fNameField.resignFirstResponder()
