@@ -97,7 +97,7 @@ Get Inspire, Shop products and Find Professionals</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="130" y="20"/>
+            <point key="canvasLocation" x="136" y="46"/>
         </scene>
         <!--Create Account View Controller-->
         <scene sceneID="lxy-Tr-0Nq">
@@ -238,7 +238,7 @@ Get Inspire, Shop products and Find Professionals</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cuB-zE-GO3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="903" y="-433"/>
+            <point key="canvasLocation" x="903" y="-797"/>
         </scene>
         <!--Type User View Controller-->
         <scene sceneID="CyD-k9-r69">
@@ -376,11 +376,36 @@ Get Inspire, Shop products and Find Professionals</string>
                         <outlet property="nameField" destination="eZ6-My-PIi" id="y44-ed-ePf"/>
                         <outlet property="segmentedControl" destination="Ckd-YX-bv6" id="jdv-v4-IQ0"/>
                         <segue destination="chM-TF-5hX" kind="presentation" identifier="account" id="rCD-hQ-wsX"/>
+                        <segue destination="gXS-Hw-4mT" kind="presentation" identifier="companyAccount" id="c9V-Bc-Mkx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ztm-GR-Z1c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1700.0000000000002" y="-434.51086956521743"/>
+            <point key="canvasLocation" x="2561" y="-797"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="8jt-de-sru">
+            <objects>
+                <viewController id="gXS-Hw-4mT" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kvT-O1-Uk4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Company Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4h-TM-0od">
+                                <rect key="frame" x="137" y="137" width="141" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="KiO-he-qal"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lkw-38-vdN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2562" y="805"/>
         </scene>
         <!--Account View Controller-->
         <scene sceneID="Rbq-OD-60K">
@@ -409,7 +434,7 @@ Get Inspire, Shop products and Find Professionals</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jEy-X4-wch" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2607" y="100"/>
+            <point key="canvasLocation" x="1677" y="-43"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="4oC-H3-2Uf">
@@ -477,11 +502,12 @@ Get Inspire, Shop products and Find Professionals</string>
                         <outlet property="emailField" destination="aPg-At-FeP" id="9kV-BQ-RbW"/>
                         <outlet property="passwordField" destination="gOa-3o-pNr" id="MUz-S9-RSa"/>
                         <segue destination="chM-TF-5hX" kind="presentation" identifier="account" id="ogt-7Q-rpe"/>
+                        <segue destination="gXS-Hw-4mT" kind="presentation" identifier="companyAccount" id="oS4-An-rgo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Ea-yk-lQW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="902.89855072463774" y="366.84782608695656"/>
+            <point key="canvasLocation" x="903" y="805"/>
         </scene>
     </scenes>
     <resources>
@@ -489,7 +515,8 @@ Get Inspire, Shop products and Find Professionals</string>
         <image name="welcome" width="2484" height="1656"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Iek-Rn-iVG"/>
-        <segue reference="rCD-hQ-wsX"/>
+        <segue reference="EwG-VH-Ypm"/>
+        <segue reference="ogt-7Q-rpe"/>
+        <segue reference="oS4-An-rgo"/>
     </inferredMetricsTieBreakers>
 </document>

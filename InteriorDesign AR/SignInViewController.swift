@@ -43,7 +43,15 @@ class SignInViewController: UIViewController {
                             if let em = document.data()["email"] as? String {
                                 if let ps = document.data()["password"] as? String{
                                     print (em, ps)
-                                    self.performSegue(withIdentifier: "account", sender: self)
+                                    if let accType = document.data()["accType"] as? String{
+                                        if "\(accType)" == "Client" {
+                                            self.performSegue(withIdentifier: "account", sender: self)
+                                            print("\(accType)")
+                                        }else{
+                                            self.performSegue(withIdentifier: "companyAccount", sender: self)
+                                            print("\(accType)")
+                                        }
+                                    }
                                 }
                             }
                         }

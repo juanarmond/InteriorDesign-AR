@@ -206,7 +206,18 @@ class TypeUserViewController: UIViewController, UIImagePickerControllerDelegate,
     }
 
     @IBAction func done(_ sender: Any) {
-        self.performSegue(withIdentifier: "account", sender: self)
+        let user = db.collection("users").document(id)
+        user.getDocument{ (document, error) in
+            if let document = document {
+                let accType = document.get("accType") as? String
+                print(accType!)
+            }
+        }
+        if "\(accType)" == "Client" {
+            self.performSegue(withIdentifier: "account", sender: self)
+        }else{
+            self.performSegue(withIdentifier: "companyAccount", sender: self)
+        }
     }
     /*
     // MARK: - Navigation
