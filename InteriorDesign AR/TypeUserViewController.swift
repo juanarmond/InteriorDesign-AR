@@ -74,7 +74,7 @@ class TypeUserViewController: UIViewController, UIImagePickerControllerDelegate,
         let rot = imageOrientation(image)
         //Upload Image do Cloud
 //        guard let uid = Auth.auth().currentUser?.uid else { return }
-        let storageRef = Storage.storage().reference().child("user/\(String(id))/avatar")
+        let storageRef = Storage.storage().reference().child("avatar/\(String(id))")
         guard let imageData = rot.jpegData(compressionQuality: 0.25) else { return }
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpg"

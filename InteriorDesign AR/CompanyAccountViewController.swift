@@ -20,6 +20,8 @@ class CompanyAccountViewController: UIViewController, UIImagePickerControllerDel
     var id: String!
     var db: Firestore!
     var prod: String!
+    var pd: String!
+    var start: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,63 +78,106 @@ class CompanyAccountViewController: UIViewController, UIImagePickerControllerDel
         self.present(actionSheet, animated: true, completion: nil)
     }
 
+    @IBAction func done(_ sender: Any) {
+        if let product = self.nameField.text, let pdescription = self.pdescriptionField.text, let cost = self.costField.text{
+            if product.isEmpty||product == "Insert name."||pdescription.isEmpty||pdescription == "Insert description."||cost.isEmpty||cost == "Insert value."{
+                print ("Please fill all fields")
+            } else{
+                let collection = db.collection("products")
+                collection
+                    .whereField("company ID", isEqualTo: id)
+                    .whereField("product", isEqualTo: product).getDocuments() { (querySnapshot, err) in
+                        for document in (querySnapshot?.documents)!{
+                            self.prod = document.data()["product"] as? String
+                            print (self.prod)
+                        }
+                        if let err = err {
+                            print("Error getting documents: \(err)")
+                        } else if self.prod != product{
+                            var ref: DocumentReference? = nil
+                            ref = self.db.collection("products").addDocument(data: [
+                                "company ID" : self.id,
+                                "product ID" : "",
+                                "product": product,
+                                "description": pdescription,
+                                "cost": Double(cost)!
+                            ]) { err in
+                                if let err = err {
+                                    print("Error adding document: \(err)")
+                                } else {
+                                    self.pd = "\(ref!.documentID)"
+                                    self.start = true
+                                    self.db.collection("products").document(self.pd).updateData(["product ID" : self.pd])
+                                    
+                                    print("Product added with ID: \(ref!.documentID)")
+//                                    self.performSegue(withIdentifier: "typeUser", sender: self)
+                                }
+                            }
+                        }else{
+                            print ("Product already in the database")
+                        }
+                }
+            }
+
+        }
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         prodImage.image = image
         let rot = imageOrientation(image)
         //Upload Image do Cloud
         //        guard let uid = Auth.auth().currentUser?.uid else { return }
-        let storageRef = Storage.storage().reference().child("user/\(String(id))/product/")
-        guard let imageData = rot.jpegData(compressionQuality: 0.25) else { return }
-        let metaData = StorageMetadata()
-        metaData.contentType = "image/jpg"
-        let uploadTask = storageRef.putData(imageData, metadata: metaData)
-        // Add a progress observer to an upload task
-        let observer = uploadTask.observe(.progress) { snapshot in
-            // A progress event occured
-            let percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount)
-                / Double(snapshot.progress!.totalUnitCount)
-            print(percentComplete)
-        }
-        uploadTask.observe(.success) { snapshot in
-            // Upload completed successfully
-            print("Upload Sucess")
-        }
-
-        uploadTask.observe(.failure) { snapshot in
-            if let error = snapshot.error as? NSError {
-                switch (StorageErrorCode(rawValue: error.code)!) {
-                case .objectNotFound:
-                    // File doesn't exist
-                    print("File doesn't exist")
-                    break
-                case .unauthorized:
-                    // User doesn't have permission to access file
-                    print("User doesn't have permission to access file")
-                    break
-                case .cancelled:
-                    // User canceled the upload
-                    print("User canceled the upload")
-                    break
-
-                    /* ... */
-
-                case .unknown:
-                    // Unknown error occurred, inspect the server response
-                    print("Unknown error")
-                    break
-                default:
-                    // A separate error occurred. This is a good place to retry the upload.
-                    print("separate error occurred")
-                    break
+            let storageRef = Storage.storage().reference().child("products/\(String(id))/\(String(pd))/picture/")
+            guard let imageData = rot.jpegData(compressionQuality: 0.25) else { return }
+            let metaData = StorageMetadata()
+            metaData.contentType = "image/jpg"
+            let uploadTask = storageRef.putData(imageData, metadata: metaData)
+            // Add a progress observer to an upload task
+            let observer = uploadTask.observe(.progress) { snapshot in
+                // A progress event occured
+                let percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount)
+                    / Double(snapshot.progress!.totalUnitCount)
+                print(percentComplete)
+            }
+            uploadTask.observe(.success) { snapshot in
+                // Upload completed successfully
+                print("Upload Sucess")
+            }
+            
+            uploadTask.observe(.failure) { snapshot in
+                if let error = snapshot.error as? NSError {
+                    switch (StorageErrorCode(rawValue: error.code)!) {
+                    case .objectNotFound:
+                        // File doesn't exist
+                        print("File doesn't exist")
+                        break
+                    case .unauthorized:
+                        // User doesn't have permission to access file
+                        print("User doesn't have permission to access file")
+                        break
+                    case .cancelled:
+                        // User canceled the upload
+                        print("User canceled the upload")
+                        break
+                        
+                        /* ... */
+                        
+                    case .unknown:
+                        // Unknown error occurred, inspect the server response
+                        print("Unknown error")
+                        break
+                    default:
+                        // A separate error occurred. This is a good place to retry the upload.
+                        print("separate error occurred")
+                        break
+                    }
                 }
             }
-        }
-
         // don't delete
         picker.dismiss(animated: true, completion: nil)
     }
-
+    
     //Fix image orientation
     func imageOrientation(_ src:UIImage)->UIImage {
         if src.imageOrientation == UIImage.Orientation.up {
@@ -155,7 +200,7 @@ class CompanyAccountViewController: UIViewController, UIImagePickerControllerDel
         case UIImage.Orientation.up, UIImage.Orientation.upMirrored:
             break
         }
-
+        
         switch src.imageOrientation {
         case UIImage.Orientation.upMirrored, UIImage.Orientation.downMirrored:
             transform.translatedBy(x: src.size.width, y: 0)
@@ -167,11 +212,11 @@ class CompanyAccountViewController: UIViewController, UIImagePickerControllerDel
         case UIImage.Orientation.up, UIImage.Orientation.down, UIImage.Orientation.left, UIImage.Orientation.right:
             break
         }
-
+        
         let ctx:CGContext = CGContext(data: nil, width: Int(src.size.width), height: Int(src.size.height), bitsPerComponent: (src.cgImage)!.bitsPerComponent, bytesPerRow: 0, space: (src.cgImage)!.colorSpace!, bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)!
-
+        
         ctx.concatenate(transform)
-
+        
         switch src.imageOrientation {
         case UIImage.Orientation.left, UIImage.Orientation.leftMirrored, UIImage.Orientation.right, UIImage.Orientation.rightMirrored:
             ctx.draw(src.cgImage!, in: CGRect(x: 0, y: 0, width: src.size.height, height: src.size.width))
@@ -180,54 +225,15 @@ class CompanyAccountViewController: UIViewController, UIImagePickerControllerDel
             ctx.draw(src.cgImage!, in: CGRect(x: 0, y: 0, width: src.size.width, height: src.size.height))
             break
         }
-
+        
         let cgimg:CGImage = ctx.makeImage()!
         let img:UIImage = UIImage(cgImage: cgimg)
-
+        
         return img
     }// Fix image rotation code below
-
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
-    }
-
-    @IBAction func done(_ sender: Any) {
-        if let product = self.nameField.text, let pdescription = self.pdescriptionField.text, let cost = self.costField.text{
-            if product.isEmpty||product == "Insert name."||pdescription.isEmpty||pdescription == "Insert description."||cost.isEmpty||cost == "Insert value."{
-                print ("Please fill all fields")
-            } else{
-                let collection = db.collection("products")
-                collection
-                    .whereField("company ID", isEqualTo: id)
-                    .whereField("product", isEqualTo: product).getDocuments() { (querySnapshot, err) in
-                        for document in (querySnapshot?.documents)!{
-                            self.prod = document.data()["product"] as? String
-                            print (self.prod)
-                        }
-                        if let err = err {
-                            print("Error getting documents: \(err)")
-                        } else if self.prod != product{
-                            var ref: DocumentReference? = nil
-                            ref = self.db.collection("products").addDocument(data: [
-                                "company ID" : self.id,
-                                "product": product,
-                                "description": pdescription,
-                                "cost": cost
-                            ]) { err in
-                                if let err = err {
-                                    print("Error adding document: \(err)")
-                                } else {
-                                    print("Product added with ID: \(ref!.documentID)")
-//                                    self.performSegue(withIdentifier: "typeUser", sender: self)
-                                }
-                            }
-                        }else{
-                            print ("Product already in the database")
-                        }
-                }
-            }
-
-        }
     }
 
     // return keyboard
