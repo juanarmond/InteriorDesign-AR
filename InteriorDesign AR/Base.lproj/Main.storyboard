@@ -546,26 +546,58 @@ Get Inspire, Shop products and Find Professionals</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hg-G5-YKe">
-                                <rect key="frame" x="186" y="169" width="64" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hg-G5-YKe">
+                                <rect key="frame" x="20" y="40" width="374" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hy0-Zl-4al">
-                                <rect key="frame" x="184" y="386" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ftK-97-MEC">
+                                <rect key="frame" x="0.0" y="109" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="chM-TF-5hX" id="bH9-FB-7ng"/>
+                                </connections>
+                            </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hj4-F5-cpd">
+                                <rect key="frame" x="70" y="624" width="275" height="39"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <state key="normal" title="Try AR">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ftK-97-MEC" firstAttribute="centerX" secondItem="hj4-F5-cpd" secondAttribute="centerX" id="8GQ-ty-eMl"/>
+                            <constraint firstItem="9hg-G5-YKe" firstAttribute="centerX" secondItem="ftK-97-MEC" secondAttribute="centerX" id="Jf7-EA-DO5"/>
+                            <constraint firstItem="ftK-97-MEC" firstAttribute="leading" secondItem="Wh6-2K-xqJ" secondAttribute="leading" id="L5Z-lM-bl3"/>
+                            <constraint firstItem="9hg-G5-YKe" firstAttribute="leading" secondItem="F67-ug-49c" secondAttribute="leading" constant="20" id="OgG-ca-qLX"/>
+                            <constraint firstItem="F67-ug-49c" firstAttribute="bottom" secondItem="hj4-F5-cpd" secondAttribute="bottom" constant="73" id="XWZ-JE-3sI"/>
+                            <constraint firstItem="hj4-F5-cpd" firstAttribute="leading" secondItem="F67-ug-49c" secondAttribute="leading" constant="70" id="dhe-oO-F0g"/>
+                            <constraint firstItem="ftK-97-MEC" firstAttribute="top" secondItem="9hg-G5-YKe" secondAttribute="bottom" constant="39" id="e1h-os-S4w"/>
+                            <constraint firstAttribute="trailing" secondItem="ftK-97-MEC" secondAttribute="trailing" id="exw-Cb-up9"/>
+                            <constraint firstItem="9hg-G5-YKe" firstAttribute="top" secondItem="F67-ug-49c" secondAttribute="top" constant="20" id="n2t-65-TEu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="F67-ug-49c"/>
                     </view>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="U6e-Qu-3Gc" id="AJv-rE-rXb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jEy-X4-wch" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="U6e-Qu-3Gc">
+                    <connections>
+                        <outlet property="delegate" destination="chM-TF-5hX" id="MdN-Db-TgA"/>
+                        <outlet property="searchBar" destination="ftK-97-MEC" id="TDq-W0-uqt"/>
+                        <outlet property="searchContentsController" destination="chM-TF-5hX" id="chE-YM-5FT"/>
+                        <outlet property="searchResultsDataSource" destination="chM-TF-5hX" id="iod-Di-Xe7"/>
+                        <outlet property="searchResultsDelegate" destination="chM-TF-5hX" id="xQU-V1-P4f"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1677" y="-43"/>
+            <point key="canvasLocation" x="1676.8115942028987" y="-43.206521739130437"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="4oC-H3-2Uf">
@@ -647,7 +679,7 @@ Get Inspire, Shop products and Find Professionals</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="EwG-VH-Ypm"/>
-        <segue reference="1Ek-1E-WmZ"/>
+        <segue reference="rCD-hQ-wsX"/>
         <segue reference="c9V-Bc-Mkx"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -215,14 +215,19 @@ class TypeUserViewController: UIViewController, UIImagePickerControllerDelegate,
         let user = db.collection("users").document(id)
         user.getDocument{ (document, error) in
             if let document = document {
-                let accType = document.get("accType") as? String
-                print(accType!)
+                let accType = document.get("accType") as! String
+                print(accType)
+                print("---------")
+                if "\(accType)" != "Client" {
+                    self.performSegue(withIdentifier: "companyAccount", sender: self)
+                    print("///////")
+                    print("\(accType)")
+                }else {
+                    self.performSegue(withIdentifier: "account", sender: self)
+                    print("*****")
+                    print("\(accType)")
+                }
             }
-        }
-        if "\(accType)" == "Client" {
-            self.performSegue(withIdentifier: "account", sender: self)
-        }else{
-            self.performSegue(withIdentifier: "companyAccount", sender: self)
         }
     }
     /*
