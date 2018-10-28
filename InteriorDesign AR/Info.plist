@@ -26,8 +26,14 @@
 	<string>Allow</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Allow</string>
-	<key>LSApplicationCategoryType</key>
+	<key>CFBundleDisplayName</key>
 	<string></string>
+	<key>UIFileSharingEnabled</key>
+	<true/>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
+	<key>UISupportsDocumentBrowser</key>
+	<true/>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

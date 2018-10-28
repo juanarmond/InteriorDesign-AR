@@ -15,6 +15,7 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     
     var db: Firestore!
+    var id: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,12 @@ class SignInViewController: UIViewController {
         Firestore.firestore().settings = settings
         // [END setup]
         db = Firestore.firestore()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let CompanyAccountViewController = segue.destination as? CompanyAccountViewController {
+            CompanyAccountViewController.id = id
+        }
     }
     
     @IBAction func signIn(_ sender: Any) {
@@ -43,6 +50,7 @@ class SignInViewController: UIViewController {
                             if let em = document.data()["email"] as? String {
                                 if let ps = document.data()["password"] as? String{
                                     print (em, ps)
+                                    self.id = document.documentID
                                     if let accType = document.data()["accType"] as? String{
                                         if "\(accType)" == "Client" {
                                             self.performSegue(withIdentifier: "account", sender: self)

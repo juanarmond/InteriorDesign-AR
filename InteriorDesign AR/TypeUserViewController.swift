@@ -19,7 +19,7 @@ class TypeUserViewController: UIViewController, UIImagePickerControllerDelegate,
     
     var id: String!
     var db: Firestore!
-    var photo: UIImage!
+//    var photo: UIImage!
     
    
     override func viewDidLoad() {
@@ -74,7 +74,7 @@ class TypeUserViewController: UIViewController, UIImagePickerControllerDelegate,
         let rot = imageOrientation(image)
         //Upload Image do Cloud
 //        guard let uid = Auth.auth().currentUser?.uid else { return }
-        let storageRef = Storage.storage().reference().child("user/\(String(id))")
+        let storageRef = Storage.storage().reference().child("user/\(String(id))/avatar")
         guard let imageData = rot.jpegData(compressionQuality: 0.25) else { return }
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpg"
@@ -202,6 +202,12 @@ class TypeUserViewController: UIViewController, UIImagePickerControllerDelegate,
             print("Company")
         default:
             break
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let CompanyAccountViewController = segue.destination as? CompanyAccountViewController {
+            CompanyAccountViewController.id = id
         }
     }
 
