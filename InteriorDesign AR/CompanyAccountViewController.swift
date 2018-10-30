@@ -246,6 +246,12 @@ class CompanyAccountViewController: UIViewController, UIImagePickerControllerDel
     @IBAction func testAR(_ sender: Any) {
         self.performSegue(withIdentifier: "account", sender: self)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let CompanyAccountViewController = segue.destination as? CompanyAccountViewController {
+            CompanyAccountViewController.id = id
+        }
+    }
     /*
     // MARK: - Navigation
 

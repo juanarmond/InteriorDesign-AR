@@ -11,16 +11,34 @@ import Firebase
 
 class AccountViewController: UIViewController {
 
+    @IBOutlet weak var nameLabel: UILabel!
     /** @var handle
      @brief The handler for the auth state listener, to allow cancelling later.
      */
+    var id: String!
+    var db: Firestore!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let settings = FirestoreSettings()
+        Firestore.firestore().settings = settings
+        // [END setup]
+        db = Firestore.firestore()
+        let user = db.collection("users").document(id)
+        user.getDocument{ (document, error) in
+            if let document = document {
+                let first = document.get("first") as? String
+                let last = document.get("last") as? String
+                self.nameLabel.text = first! + " " + last!
+            } else {
+                print("Document does not exist in cache")
+            }
+        }
     }
     
+
     /*
     // MARK: - Navigation
 
