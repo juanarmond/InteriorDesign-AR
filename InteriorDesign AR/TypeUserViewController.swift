@@ -209,6 +209,9 @@ class TypeUserViewController: UIViewController, UIImagePickerControllerDelegate,
         if let CompanyAccountViewController = segue.destination as? CompanyAccountViewController {
             CompanyAccountViewController.id = id
         }
+        if let AccountViewController = segue.destination as? AccountViewController {
+            AccountViewController.id = id
+        }
     }
 
     @IBAction func done(_ sender: Any) {
