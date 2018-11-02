@@ -9,9 +9,10 @@
 import UIKit
 import Firebase
 
-class AccountViewController: UIViewController, UITableViewDataSource,UITableViewDelegate {
+class AccountViewController: UIViewController, UITableViewDataSource,UITableViewDelegate, UISearchBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     /** @var handle
      @brief The handler for the auth state listener, to allow cancelling later.
@@ -20,7 +21,8 @@ class AccountViewController: UIViewController, UITableViewDataSource,UITableView
     var db: Firestore!
     var products: [String] = []
     var refresher: UIRefreshControl!
-//    let data = ["data 1", "data 2"]
+    var searchProduct: [String] = []
+    var searching: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,14 +74,36 @@ class AccountViewController: UIViewController, UITableViewDataSource,UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return products.count
+        if (searching) {
+            return searchProduct.count
+        }else{
+            return products.count
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath )
-        
-        cell.textLabel?.text = products[indexPath.row]
+        if (searching){
+            cell.textLabel?.text = searchProduct[indexPath.row]
+        } else{
+            cell.textLabel?.text = products[indexPath.row]
+        }
         return cell
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchProduct = products.filter({$0.prefix(searchText.count) == searchText.lowercased()})
+        self.searching = true
+        self.tableView.reloadData()
+        
+        for p in searchProduct {
+            print ("\(p)")
+        }
+    }
+    
+    // return keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        searchBar.resignFirstResponder()
     }
     
     /*
@@ -93,3 +117,4 @@ class AccountViewController: UIViewController, UITableViewDataSource,UITableView
     */
 
 }
+
