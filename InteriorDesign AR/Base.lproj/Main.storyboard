@@ -566,7 +566,7 @@ Get Inspire, Shop products and Find Professionals</string>
                                 </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Emd-PQ-dN1">
-                                <rect key="frame" x="0.0" y="151.66666666666666" width="414" height="464.33333333333337"/>
+                                <rect key="frame" x="0.0" y="152" width="414" height="584"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="fmd-f1-fbJ" style="IBUITableViewCellStyleDefault" id="WTh-Wm-eLp">
@@ -592,32 +592,21 @@ Get Inspire, Shop products and Find Professionals</string>
                                     <outlet property="delegate" destination="chM-TF-5hX" id="xpP-VV-qFM"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hj4-F5-cpd">
-                                <rect key="frame" x="70" y="624" width="281" height="39"/>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <state key="normal" title="Try AR">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Emd-PQ-dN1" firstAttribute="trailing" secondItem="F67-ug-49c" secondAttribute="trailing" id="858-ji-gXa"/>
                             <constraint firstItem="Pj8-JS-DL1" firstAttribute="leading" secondItem="F67-ug-49c" secondAttribute="leading" id="9Eu-Y1-oBY"/>
                             <constraint firstItem="Emd-PQ-dN1" firstAttribute="trailing" secondItem="F67-ug-49c" secondAttribute="trailing" id="E7e-zO-owr"/>
-                            <constraint firstItem="hj4-F5-cpd" firstAttribute="top" secondItem="Emd-PQ-dN1" secondAttribute="bottom" constant="8" id="F59-0e-owe"/>
-                            <constraint firstItem="hj4-F5-cpd" firstAttribute="top" secondItem="Emd-PQ-dN1" secondAttribute="bottom" constant="8" id="Lix-n7-icY"/>
+                            <constraint firstItem="Emd-PQ-dN1" firstAttribute="leading" secondItem="F67-ug-49c" secondAttribute="leading" id="GAM-MR-VjP"/>
                             <constraint firstItem="9hg-G5-YKe" firstAttribute="leading" secondItem="F67-ug-49c" secondAttribute="leading" constant="20" id="OgG-ca-qLX"/>
-                            <constraint firstItem="hj4-F5-cpd" firstAttribute="leading" secondItem="F67-ug-49c" secondAttribute="leading" constant="70" id="V6U-1x-J7a"/>
-                            <constraint firstItem="F67-ug-49c" firstAttribute="bottom" secondItem="hj4-F5-cpd" secondAttribute="bottom" constant="73" id="XWZ-JE-3sI"/>
                             <constraint firstItem="Pj8-JS-DL1" firstAttribute="trailing" secondItem="F67-ug-49c" secondAttribute="trailing" id="dWb-aR-hyT"/>
-                            <constraint firstItem="hj4-F5-cpd" firstAttribute="leading" secondItem="F67-ug-49c" secondAttribute="leading" constant="70" id="dhe-oO-F0g"/>
                             <constraint firstItem="Pj8-JS-DL1" firstAttribute="top" secondItem="9hg-G5-YKe" secondAttribute="bottom" constant="16" id="h7R-dw-EVe"/>
-                            <constraint firstItem="F67-ug-49c" firstAttribute="trailing" secondItem="hj4-F5-cpd" secondAttribute="trailing" constant="63" id="j4h-9W-dKi"/>
                             <constraint firstItem="Emd-PQ-dN1" firstAttribute="top" secondItem="Pj8-JS-DL1" secondAttribute="bottom" id="n2Z-Qh-4hh"/>
                             <constraint firstItem="9hg-G5-YKe" firstAttribute="top" secondItem="F67-ug-49c" secondAttribute="top" constant="20" id="n2t-65-TEu"/>
                             <constraint firstItem="Emd-PQ-dN1" firstAttribute="leading" secondItem="F67-ug-49c" secondAttribute="leading" id="nBE-7w-X4G"/>
-                            <constraint firstItem="F67-ug-49c" firstAttribute="bottom" secondItem="hj4-F5-cpd" secondAttribute="bottom" constant="73" id="vkb-R1-aRy"/>
+                            <constraint firstItem="Emd-PQ-dN1" firstAttribute="top" secondItem="Pj8-JS-DL1" secondAttribute="bottom" constant="0.33000000000000002" id="nuj-GU-HvD"/>
+                            <constraint firstItem="Emd-PQ-dN1" firstAttribute="bottom" secondItem="F67-ug-49c" secondAttribute="bottom" id="yyG-Hg-3NJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="F67-ug-49c"/>
                     </view>

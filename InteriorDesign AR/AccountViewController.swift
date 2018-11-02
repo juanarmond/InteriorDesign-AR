@@ -62,7 +62,7 @@ class AccountViewController: UIViewController, UITableViewDataSource,UITableView
             } else {
                 for document in querySnapshot!.documents {
                     self.products.append(document.get("product") as! String)
-                    print("\(document.documentID) => \(document.get("product") ?? "empty")")
+//                    print("\(document.documentID) => \(document.get("product") ?? "empty")")
                 }
                 print(self.products.count)
             }
@@ -86,6 +86,7 @@ class AccountViewController: UIViewController, UITableViewDataSource,UITableView
         if (searching){
             cell.textLabel?.text = searchProduct[indexPath.row]
         } else{
+            products.sort()
             cell.textLabel?.text = products[indexPath.row]
         }
         return cell
@@ -95,10 +96,6 @@ class AccountViewController: UIViewController, UITableViewDataSource,UITableView
         searchProduct = products.filter({$0.prefix(searchText.count) == searchText.lowercased()})
         self.searching = true
         self.tableView.reloadData()
-        
-        for p in searchProduct {
-            print ("\(p)")
-        }
     }
     
     // return keyboard
