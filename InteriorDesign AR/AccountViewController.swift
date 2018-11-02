@@ -102,6 +102,7 @@ class AccountViewController: UIViewController, UITableViewDataSource,UITableView
         self.searching = false
         self.searchBar.text = ""
         self.searchBar.resignFirstResponder()
+        self.tableView.reloadData()
     }
     
     // return keyboard
