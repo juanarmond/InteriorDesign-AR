@@ -381,7 +381,7 @@ Get Inspire, Shop products and Find Professionals</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ztm-GR-Z1c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2561" y="-753"/>
+            <point key="canvasLocation" x="3109" y="-753"/>
         </scene>
         <!--Company Account View Controller-->
         <scene sceneID="8jt-de-sru">
@@ -536,7 +536,7 @@ Get Inspire, Shop products and Find Professionals</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lkw-38-vdN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2560.8695652173915" y="804.61956521739137"/>
+            <point key="canvasLocation" x="3109" y="805"/>
         </scene>
         <!--Account View Controller-->
         <scene sceneID="Rbq-OD-60K">
@@ -626,7 +626,7 @@ Get Inspire, Shop products and Find Professionals</string>
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1676.8115942028987" y="-43.206521739130437"/>
+            <point key="canvasLocation" x="1672" y="12"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="4oC-H3-2Uf">

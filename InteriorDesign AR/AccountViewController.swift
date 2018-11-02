@@ -98,6 +98,12 @@ class AccountViewController: UIViewController, UITableViewDataSource,UITableView
         self.tableView.reloadData()
     }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.searching = false
+        self.searchBar.text = ""
+        self.searchBar.resignFirstResponder()
+    }
+    
     // return keyboard
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         searchBar.resignFirstResponder()
