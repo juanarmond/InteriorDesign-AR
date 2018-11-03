@@ -591,7 +591,7 @@ Get Inspire, Shop products and Find Professionals</string>
                     </view>
                     <connections>
                         <outlet property="nameLabel" destination="zym-mU-59k" id="Ww4-ID-OTR"/>
-                        <segue destination="chM-TF-5hX" kind="presentation" identifier="searchItem" id="XN5-Fi-fxN"/>
+                        <segue destination="chM-TF-5hX" kind="presentation" identifier="searchItem" id="R5d-pv-fen"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aO8-qd-9IP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -629,15 +629,15 @@ Get Inspire, Shop products and Find Professionals</string>
                                 <rect key="frame" x="0.0" y="152" width="414" height="584"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="fmd-f1-fbJ" style="IBUITableViewCellStyleDefault" id="WTh-Wm-eLp">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="3vB-Gw-bZF" style="IBUITableViewCellStyleDefault" id="b3g-DJ-rQE">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WTh-Wm-eLp" id="nev-Cc-lOu">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="b3g-DJ-rQE" id="rWn-Js-tfl">
+                                            <rect key="frame" x="0.0" y="0.0" width="376" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fmd-f1-fbJ">
-                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.666666666666664"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3vB-Gw-bZF">
+                                                    <rect key="frame" x="20" y="0.0" width="356" height="43.666666666666664"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -645,6 +645,9 @@ Get Inspire, Shop products and Find Professionals</string>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="mo6-wF-7D7" kind="show" identifier="ar" id="7ar-zh-eV7"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -662,7 +665,6 @@ Get Inspire, Shop products and Find Professionals</string>
                             <constraint firstItem="9hg-G5-YKe" firstAttribute="leading" secondItem="F67-ug-49c" secondAttribute="leading" constant="20" id="OgG-ca-qLX"/>
                             <constraint firstItem="Pj8-JS-DL1" firstAttribute="trailing" secondItem="F67-ug-49c" secondAttribute="trailing" id="dWb-aR-hyT"/>
                             <constraint firstItem="Pj8-JS-DL1" firstAttribute="top" secondItem="9hg-G5-YKe" secondAttribute="bottom" constant="16" id="h7R-dw-EVe"/>
-                            <constraint firstItem="Emd-PQ-dN1" firstAttribute="top" secondItem="Pj8-JS-DL1" secondAttribute="bottom" id="n2Z-Qh-4hh"/>
                             <constraint firstItem="9hg-G5-YKe" firstAttribute="top" secondItem="F67-ug-49c" secondAttribute="top" constant="20" id="n2t-65-TEu"/>
                             <constraint firstItem="Emd-PQ-dN1" firstAttribute="leading" secondItem="F67-ug-49c" secondAttribute="leading" id="nBE-7w-X4G"/>
                             <constraint firstItem="Emd-PQ-dN1" firstAttribute="top" secondItem="Pj8-JS-DL1" secondAttribute="bottom" constant="0.33000000000000002" id="nuj-GU-HvD"/>
@@ -674,7 +676,6 @@ Get Inspire, Shop products and Find Professionals</string>
                         <outlet property="searchBar" destination="Pj8-JS-DL1" id="QaW-3M-nV5"/>
                         <outlet property="searchDisplayController" destination="U6e-Qu-3Gc" id="AJv-rE-rXb"/>
                         <outlet property="tableView" destination="Emd-PQ-dN1" id="9X6-ty-rK6"/>
-                        <segue destination="mo6-wF-7D7" kind="presentation" identifier="ar" id="Odf-Ng-xRV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jEy-X4-wch" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -701,29 +702,34 @@ Get Inspire, Shop products and Find Professionals</string>
                                 <rect key="frame" x="0.0" y="67" width="414" height="669"/>
                             </arscnView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IjX-rJ-adf">
-                                <rect key="frame" x="20" y="20" width="374" height="39"/>
+                                <rect key="frame" x="20" y="28" width="374" height="39"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="Choose Another Item">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="chooseAnother:" destination="mo6-wF-7D7" eventType="touchUpInside" id="JiJ-Z7-6hl"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="nLf-T0-num" firstAttribute="trailing" secondItem="IjX-rJ-adf" secondAttribute="trailing" constant="20" id="2lo-sA-ZXk"/>
-                            <constraint firstItem="IjX-rJ-adf" firstAttribute="top" secondItem="nLf-T0-num" secondAttribute="top" id="DRT-8c-b39"/>
+                            <constraint firstItem="IjX-rJ-adf" firstAttribute="top" secondItem="nLf-T0-num" secondAttribute="top" constant="8" id="DRT-8c-b39"/>
                             <constraint firstItem="IjX-rJ-adf" firstAttribute="leading" secondItem="nLf-T0-num" secondAttribute="leading" constant="20" id="KAV-Tf-W3i"/>
                             <constraint firstItem="eSV-Qx-eN2" firstAttribute="trailing" secondItem="nLf-T0-num" secondAttribute="trailing" id="P1p-1U-BCf"/>
                             <constraint firstItem="eSV-Qx-eN2" firstAttribute="leading" secondItem="nLf-T0-num" secondAttribute="leading" id="SSd-An-urv"/>
                             <constraint firstItem="eSV-Qx-eN2" firstAttribute="bottom" secondItem="nLf-T0-num" secondAttribute="bottom" id="UXb-Vi-m5w"/>
-                            <constraint firstItem="eSV-Qx-eN2" firstAttribute="top" secondItem="IjX-rJ-adf" secondAttribute="bottom" constant="8" id="mmB-ca-wO6"/>
-                            <constraint firstItem="eSV-Qx-eN2" firstAttribute="top" secondItem="IjX-rJ-adf" secondAttribute="bottom" constant="8" id="uTc-qT-qBL"/>
+                            <constraint firstItem="eSV-Qx-eN2" firstAttribute="top" secondItem="IjX-rJ-adf" secondAttribute="bottom" id="mmB-ca-wO6"/>
+                            <constraint firstItem="eSV-Qx-eN2" firstAttribute="top" secondItem="IjX-rJ-adf" secondAttribute="bottom" id="uTc-qT-qBL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nLf-T0-num"/>
                     </view>
+                    <navigationItem key="navigationItem" id="tzY-aQ-Q2h"/>
                     <connections>
                         <outlet property="ARView" destination="eSV-Qx-eN2" id="QpM-B0-P0J"/>
+                        <segue destination="chM-TF-5hX" kind="presentation" identifier="searchItem" id="8AS-Rw-itL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i0H-SY-TdY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -824,7 +830,7 @@ Get Inspire, Shop products and Find Professionals</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Iek-Rn-iVG"/>
-        <segue reference="XN5-Fi-fxN"/>
+        <segue reference="8AS-Rw-itL"/>
         <segue reference="WIg-kA-UgS"/>
         <segue reference="oS4-An-rgo"/>
         <segue reference="JBs-OZ-aXJ"/>

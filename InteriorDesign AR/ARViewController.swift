@@ -17,6 +17,7 @@ class ARViewController: UIViewController{
     
     var db: Firestore!
     var item: String!
+    var id: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,19 @@ class ARViewController: UIViewController{
         // Do any additional setup after loading the view.
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
+    }
+    func getUser(){
+        db = Firestore.firestore()
+        let user = db.collection("users").document(id)
+        user.getDocument{ (document, error) in
+            if let document = document {
+                let first = document.get("first") as? String
+                let last = document.get("last") as? String
+                print(first! + " " + last!)
+            } else {
+                print("Document does not exist in cache")
+            }
+        }
     }
     
     func getItem(){
@@ -41,6 +55,15 @@ class ARViewController: UIViewController{
         }
     }
     
+    @IBAction func chooseAnother(_ sender: Any) {
+        self.performSegue(withIdentifier: "searchItem", sender: self)
+        
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let SearchItemViewController = segue.destination as? SearchItemViewController {
+            SearchItemViewController.id = id
+        }
+    }
     
 
     /*

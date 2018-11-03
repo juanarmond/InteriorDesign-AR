@@ -111,12 +111,12 @@ class SearchItemViewController: UIViewController, UITableViewDataSource,UITableV
         searchBar.resignFirstResponder()
     }
     
-
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let ARViewController = segue.destination as? ARViewController {
-            ARViewController.item = item
-        }
+        if  segue.identifier == "ar",
+            let ARViewController = segue.destination as? ARViewController {
+                ARViewController.item = item
+                ARViewController.id = id
+            }
     }
     
     /*
