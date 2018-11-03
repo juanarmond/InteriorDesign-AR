@@ -244,12 +244,12 @@ class CompanyAccountViewController: UIViewController, UIImagePickerControllerDel
     }
     
     @IBAction func testAR(_ sender: Any) {
-        self.performSegue(withIdentifier: "account", sender: self)
+        self.performSegue(withIdentifier: "arScan", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let CompanyAccountViewController = segue.destination as? CompanyAccountViewController {
-            CompanyAccountViewController.id = id
+        if let ARScanViewController = segue.destination as? ARScanViewController {
+            ARScanViewController.id = id
         }
     }
     /*

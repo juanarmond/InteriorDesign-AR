@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		310EF7F121737F9600B95F33 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310EF7F021737F9600B95F33 /* AccountViewController.swift */; };
+		310EF7F121737F9600B95F33 /* SearchItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310EF7F021737F9600B95F33 /* SearchItemViewController.swift */; };
+		31875B87218DC23500FA5966 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31875B86218DC23500FA5966 /* ARViewController.swift */; };
+		31875B89218DDD2D00FA5966 /* ARScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31875B88218DDD2D00FA5966 /* ARScanViewController.swift */; };
 		31A65C2C21592620006CA768 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A65C2B21592620006CA768 /* AppDelegate.swift */; };
 		31A65C2E21592620006CA768 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A65C2D21592620006CA768 /* ViewController.swift */; };
 		31A65C3121592620006CA768 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31A65C2F21592620006CA768 /* Main.storyboard */; };
@@ -47,7 +49,9 @@
 		189FCE880E2E9F77AF312CE3 /* Pods-InteriorDesign ARUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InteriorDesign ARUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-InteriorDesign ARUITests/Pods-InteriorDesign ARUITests.release.xcconfig"; sourceTree = "<group>"; };
 		230A94EECC4FC1AA2B216E69 /* Pods-InteriorDesign AR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InteriorDesign AR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InteriorDesign AR/Pods-InteriorDesign AR.debug.xcconfig"; sourceTree = "<group>"; };
 		2BCA23553F885AA31B782B99 /* Pods_InteriorDesign_AR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InteriorDesign_AR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		310EF7F021737F9600B95F33 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		310EF7F021737F9600B95F33 /* SearchItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemViewController.swift; sourceTree = "<group>"; };
+		31875B86218DC23500FA5966 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
+		31875B88218DDD2D00FA5966 /* ARScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARScanViewController.swift; sourceTree = "<group>"; };
 		31A65C2821592620006CA768 /* InteriorDesign AR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "InteriorDesign AR.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		31A65C2B21592620006CA768 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31A65C2D21592620006CA768 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -136,9 +140,11 @@
 				31A65C5921592C31006CA768 /* GoogleService-Info.plist */,
 				31B925AB2160C7D1004EEB56 /* CreateAccountViewController.swift */,
 				31B925AD2160D354004EEB56 /* SignInViewController.swift */,
-				310EF7F021737F9600B95F33 /* AccountViewController.swift */,
+				310EF7F021737F9600B95F33 /* SearchItemViewController.swift */,
 				31C1E212217C769A0018F1C0 /* TypeUserViewController.swift */,
 				31D43F512185A94700FF3170 /* CompanyAccountViewController.swift */,
+				31875B86218DC23500FA5966 /* ARViewController.swift */,
+				31875B88218DDD2D00FA5966 /* ARScanViewController.swift */,
 			);
 			path = "InteriorDesign AR";
 			sourceTree = "<group>";
@@ -431,9 +437,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31875B89218DDD2D00FA5966 /* ARScanViewController.swift in Sources */,
 				31B925AE2160D354004EEB56 /* SignInViewController.swift in Sources */,
-				310EF7F121737F9600B95F33 /* AccountViewController.swift in Sources */,
+				310EF7F121737F9600B95F33 /* SearchItemViewController.swift in Sources */,
 				31B925AC2160C7D1004EEB56 /* CreateAccountViewController.swift in Sources */,
+				31875B87218DC23500FA5966 /* ARViewController.swift in Sources */,
 				31D43F522185A94700FF3170 /* CompanyAccountViewController.swift in Sources */,
 				31A65C2E21592620006CA768 /* ViewController.swift in Sources */,
 				31A65C2C21592620006CA768 /* AppDelegate.swift in Sources */,

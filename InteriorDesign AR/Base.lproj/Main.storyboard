@@ -97,7 +97,7 @@ Get Inspire, Shop products and Find Professionals</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="152" y="-43"/>
+            <point key="canvasLocation" x="-249" y="11"/>
         </scene>
         <!--Create Account View Controller-->
         <scene sceneID="lxy-Tr-0Nq">
@@ -238,7 +238,7 @@ Get Inspire, Shop products and Find Professionals</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cuB-zE-GO3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="919" y="-753"/>
+            <point key="canvasLocation" x="786" y="-753"/>
         </scene>
         <!--Type User View Controller-->
         <scene sceneID="CyD-k9-r69">
@@ -381,7 +381,7 @@ Get Inspire, Shop products and Find Professionals</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ztm-GR-Z1c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3109" y="-753"/>
+            <point key="canvasLocation" x="3535" y="-753"/>
         </scene>
         <!--Company Account View Controller-->
         <scene sceneID="8jt-de-sru">
@@ -531,17 +531,77 @@ Get Inspire, Shop products and Find Professionals</string>
                         <outlet property="nameField" destination="vnN-do-jGU" id="Ylt-BN-Djd"/>
                         <outlet property="pdescriptionField" destination="USi-Cp-cg0" id="5sP-Nn-N6O"/>
                         <outlet property="prodImage" destination="NhH-l2-zwQ" id="Rii-DS-Vmd"/>
-                        <segue destination="chM-TF-5hX" kind="presentation" identifier="account" id="1Ek-1E-WmZ"/>
+                        <segue destination="4Xo-6g-loL" kind="presentation" identifier="arScan" id="ce8-G1-HZB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lkw-38-vdN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3109" y="805"/>
+            <point key="canvasLocation" x="3535" y="1131"/>
         </scene>
-        <!--Account View Controller-->
+        <!--Scan View Controller-->
+        <scene sceneID="XrC-tA-IQy">
+            <objects>
+                <viewController id="4Xo-6g-loL" customClass="ARScanViewController" customModule="InteriorDesign_AR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oeK-RT-qPC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zym-mU-59k">
+                                <rect key="frame" x="20" y="88" width="374" height="40"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="33"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ofm-MP-jAw">
+                                <rect key="frame" x="20" y="560" width="374" height="39"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <state key="normal" title="Try Scan">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="tryScan:" destination="4Xo-6g-loL" eventType="touchUpInside" id="sad-0c-t3q"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eCA-A4-ukd">
+                                <rect key="frame" x="20" y="372" width="374" height="39"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <state key="normal" title="Try AR">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="tryAR:" destination="4Xo-6g-loL" eventType="touchUpInside" id="eWX-o7-afe"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="zym-mU-59k" firstAttribute="trailing" secondItem="oeK-RT-qPC" secondAttribute="trailingMargin" id="Dba-Z1-N2E"/>
+                            <constraint firstItem="ofm-MP-jAw" firstAttribute="top" secondItem="eCA-A4-ukd" secondAttribute="bottom" constant="149" id="Fy7-Es-VbX"/>
+                            <constraint firstItem="zym-mU-59k" firstAttribute="leading" secondItem="eCA-A4-ukd" secondAttribute="leading" id="LZc-Yl-k3l"/>
+                            <constraint firstItem="HR7-fn-xE5" firstAttribute="bottom" secondItem="ofm-MP-jAw" secondAttribute="bottom" constant="137" id="TsG-0D-ugQ"/>
+                            <constraint firstItem="zym-mU-59k" firstAttribute="top" secondItem="HR7-fn-xE5" secondAttribute="top" constant="68" id="UIg-GP-EY9"/>
+                            <constraint firstItem="eCA-A4-ukd" firstAttribute="trailing" secondItem="ofm-MP-jAw" secondAttribute="trailing" id="W3f-PJ-FTg"/>
+                            <constraint firstItem="zym-mU-59k" firstAttribute="trailing" secondItem="eCA-A4-ukd" secondAttribute="trailing" id="c6r-aC-fKJ"/>
+                            <constraint firstItem="zym-mU-59k" firstAttribute="leading" secondItem="oeK-RT-qPC" secondAttribute="leadingMargin" id="eDL-YV-MOL"/>
+                            <constraint firstItem="eCA-A4-ukd" firstAttribute="leading" secondItem="ofm-MP-jAw" secondAttribute="leading" id="naU-ga-HzM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="HR7-fn-xE5"/>
+                    </view>
+                    <connections>
+                        <outlet property="nameLabel" destination="zym-mU-59k" id="Ww4-ID-OTR"/>
+                        <segue destination="chM-TF-5hX" kind="presentation" identifier="searchItem" id="XN5-Fi-fxN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aO8-qd-9IP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1329" y="183"/>
+        </scene>
+        <!--Search Item View Controller-->
         <scene sceneID="Rbq-OD-60K">
             <objects>
-                <viewController id="chM-TF-5hX" customClass="AccountViewController" customModule="InteriorDesign_AR" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="chM-TF-5hX" customClass="SearchItemViewController" customModule="InteriorDesign_AR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wh6-2K-xqJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -614,6 +674,7 @@ Get Inspire, Shop products and Find Professionals</string>
                         <outlet property="searchBar" destination="Pj8-JS-DL1" id="QaW-3M-nV5"/>
                         <outlet property="searchDisplayController" destination="U6e-Qu-3Gc" id="AJv-rE-rXb"/>
                         <outlet property="tableView" destination="Emd-PQ-dN1" id="9X6-ty-rK6"/>
+                        <segue destination="mo6-wF-7D7" kind="presentation" identifier="ar" id="Odf-Ng-xRV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jEy-X4-wch" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -626,7 +687,48 @@ Get Inspire, Shop products and Find Professionals</string>
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1672" y="12"/>
+            <point key="canvasLocation" x="2258" y="183"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="T0d-Tc-pf8">
+            <objects>
+                <viewController id="mo6-wF-7D7" customClass="ARViewController" customModule="InteriorDesign_AR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="elU-Bc-vE2" customClass="AR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eSV-Qx-eN2">
+                                <rect key="frame" x="0.0" y="67" width="414" height="669"/>
+                            </arscnView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IjX-rJ-adf">
+                                <rect key="frame" x="20" y="20" width="374" height="39"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <state key="normal" title="Choose Another Item">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nLf-T0-num" firstAttribute="trailing" secondItem="IjX-rJ-adf" secondAttribute="trailing" constant="20" id="2lo-sA-ZXk"/>
+                            <constraint firstItem="IjX-rJ-adf" firstAttribute="top" secondItem="nLf-T0-num" secondAttribute="top" id="DRT-8c-b39"/>
+                            <constraint firstItem="IjX-rJ-adf" firstAttribute="leading" secondItem="nLf-T0-num" secondAttribute="leading" constant="20" id="KAV-Tf-W3i"/>
+                            <constraint firstItem="eSV-Qx-eN2" firstAttribute="trailing" secondItem="nLf-T0-num" secondAttribute="trailing" id="P1p-1U-BCf"/>
+                            <constraint firstItem="eSV-Qx-eN2" firstAttribute="leading" secondItem="nLf-T0-num" secondAttribute="leading" id="SSd-An-urv"/>
+                            <constraint firstItem="eSV-Qx-eN2" firstAttribute="bottom" secondItem="nLf-T0-num" secondAttribute="bottom" id="UXb-Vi-m5w"/>
+                            <constraint firstItem="eSV-Qx-eN2" firstAttribute="top" secondItem="IjX-rJ-adf" secondAttribute="bottom" constant="8" id="mmB-ca-wO6"/>
+                            <constraint firstItem="eSV-Qx-eN2" firstAttribute="top" secondItem="IjX-rJ-adf" secondAttribute="bottom" constant="8" id="uTc-qT-qBL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nLf-T0-num"/>
+                    </view>
+                    <connections>
+                        <outlet property="ARView" destination="eSV-Qx-eN2" id="QpM-B0-P0J"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i0H-SY-TdY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3116" y="183"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="4oC-H3-2Uf">
@@ -677,11 +779,24 @@ Get Inspire, Shop products and Find Professionals</string>
                                     <constraint firstAttribute="width" constant="300" id="sAw-1r-WZE"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E5w-Y4-LD4">
+                                <rect key="frame" x="18" y="664" width="374" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="Don't have an account? Sign up here.">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="signUp:" destination="grd-S3-Q90" eventType="touchUpInside" id="M2p-Cc-ExZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="wdh-Z4-dq4" firstAttribute="top" secondItem="uTC-XL-Tq4" secondAttribute="top" constant="152" id="G3j-gN-Q9O"/>
                             <constraint firstItem="JY2-Ok-LQT" firstAttribute="top" secondItem="wdh-Z4-dq4" secondAttribute="bottom" constant="30" id="KLt-2q-lVZ"/>
+                            <constraint firstItem="E5w-Y4-LD4" firstAttribute="leading" secondItem="uTC-XL-Tq4" secondAttribute="leading" constant="18" id="Smp-uJ-tlk"/>
+                            <constraint firstItem="uTC-XL-Tq4" firstAttribute="trailing" secondItem="E5w-Y4-LD4" secondAttribute="trailing" constant="22" id="X0N-2y-Jsv"/>
+                            <constraint firstItem="uTC-XL-Tq4" firstAttribute="bottom" secondItem="E5w-Y4-LD4" secondAttribute="bottom" constant="45" id="XKP-Y7-WWF"/>
                             <constraint firstItem="49D-Nf-j7E" firstAttribute="leading" secondItem="uTC-XL-Tq4" secondAttribute="leading" constant="116" id="Ycb-lA-Xrh"/>
                             <constraint firstItem="uTC-XL-Tq4" firstAttribute="trailing" secondItem="49D-Nf-j7E" secondAttribute="trailing" constant="111" id="ZkQ-7B-igB"/>
                             <constraint firstItem="49D-Nf-j7E" firstAttribute="top" secondItem="JY2-Ok-LQT" secondAttribute="bottom" constant="55" id="jlJ-4F-sgU"/>
@@ -693,13 +808,14 @@ Get Inspire, Shop products and Find Professionals</string>
                     <connections>
                         <outlet property="emailField" destination="aPg-At-FeP" id="9kV-BQ-RbW"/>
                         <outlet property="passwordField" destination="gOa-3o-pNr" id="MUz-S9-RSa"/>
-                        <segue destination="chM-TF-5hX" kind="presentation" identifier="account" id="ogt-7Q-rpe"/>
                         <segue destination="gXS-Hw-4mT" kind="presentation" identifier="companyAccount" id="oS4-An-rgo"/>
+                        <segue destination="4Xo-6g-loL" kind="presentation" identifier="arScan" id="WIg-kA-UgS"/>
+                        <segue destination="dsx-Sg-OMJ" kind="presentation" identifier="createAccount" id="JBs-OZ-aXJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Ea-yk-lQW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="903" y="805"/>
+            <point key="canvasLocation" x="225" y="1131"/>
         </scene>
     </scenes>
     <resources>
@@ -708,7 +824,9 @@ Get Inspire, Shop products and Find Professionals</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Iek-Rn-iVG"/>
-        <segue reference="1Ek-1E-WmZ"/>
-        <segue reference="c9V-Bc-Mkx"/>
+        <segue reference="XN5-Fi-fxN"/>
+        <segue reference="WIg-kA-UgS"/>
+        <segue reference="oS4-An-rgo"/>
+        <segue reference="JBs-OZ-aXJ"/>
     </inferredMetricsTieBreakers>
 </document>

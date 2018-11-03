@@ -33,8 +33,8 @@ class SignInViewController: UIViewController {
         if let CompanyAccountViewController = segue.destination as? CompanyAccountViewController {
             CompanyAccountViewController.id = id
         }
-        if let AccountViewController = segue.destination as? AccountViewController {
-            AccountViewController.id = id
+        if let ARScanViewController = segue.destination as? ARScanViewController {
+            ARScanViewController.id = id
         }
     }
     
@@ -56,7 +56,7 @@ class SignInViewController: UIViewController {
                                     self.id = document.documentID
                                     if let accType = document.data()["accType"] as? String{
                                         if "\(accType)" == "Client" {
-                                            self.performSegue(withIdentifier: "account", sender: self)
+                                            self.performSegue(withIdentifier: "arScan", sender: self)
                                             print("\(accType)")
                                         }else{
                                             self.performSegue(withIdentifier: "companyAccount", sender: self)
@@ -71,6 +71,9 @@ class SignInViewController: UIViewController {
         }
     }
     
+    @IBAction func signUp(_ sender: Any) {
+        performSegue(withIdentifier: "createAccount", sender: self)
+    }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         emailField.resignFirstResponder()
         passwordField.resignFirstResponder()
