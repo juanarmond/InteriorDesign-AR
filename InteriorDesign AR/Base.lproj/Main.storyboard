@@ -829,7 +829,6 @@ Get Inspire, Shop products and Find Professionals</string>
         <image name="welcome" width="2484" height="1656"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7ar-zh-eV7"/>
         <segue reference="Iek-Rn-iVG"/>
         <segue reference="8AS-Rw-itL"/>
         <segue reference="WIg-kA-UgS"/>
