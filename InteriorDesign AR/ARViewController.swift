@@ -10,18 +10,15 @@ import UIKit
 import ARKit
 import SceneKit
 import Firebase
-import Foundation
-import QuickLook
 
 class ARViewController: UIViewController{
 
-    
-    @IBOutlet weak var aRView: ARSCNView!
     
     var db: Firestore!
     var item: String!
     var id: String!
     var image: UIImage!
+    var virtualOS: SCNScene!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +26,9 @@ class ARViewController: UIViewController{
         // Do any additional setup after loading the view.
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
-        print(id, " ", item)
-        
+        print(id!, " ", item!)
+        getItem()
+    
     }
 
     func getItem(){
@@ -40,21 +38,62 @@ class ARViewController: UIViewController{
         // Create a storage reference from our storage service
         let storageRef = storage.reference()
         // Create a reference to the file you want to download
-        let islandRef = storageRef.child("products/qdc5StI534Q4Np0uAR8g/\(String(describing: item))")
+        let imageRef = storageRef.child("products/qdc5StI534Q4Np0uAR8g/\(item!)/redchair.usdz")
         
         // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
-        islandRef.getData(maxSize: 10 * 1024 * 1024) { data, error in
+        let downloadTask = imageRef.getData(maxSize: 15 * 1024 * 1024) { data, error in
             if error != nil {
                 // Uh-oh, an error occurred!
                 print("no image")
+                print(imageRef)
             } else {
                 // Data for "product" is returned
+                self.virtualOS = SCNScene(named: "\(data!)")
+                
                 self.image = UIImage(data: data!)
+                print(self.image)
+            }
+        }
+        
+        downloadTask.observe(.progress) { snapshot in
+            // A progress event occured
+            let percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount)
+                / Double(snapshot.progress!.totalUnitCount)
+            print(percentComplete)
+        }
+        
+        downloadTask.observe(.success) { snapshot in
+            // Upload completed successfully
+            print("Upload Sucess")
+        }
+        
+        downloadTask.observe(.failure) { snapshot in
+            guard let errorCode = (snapshot.error as NSError?)?.code else {
+                return
+            }
+            guard let error = StorageErrorCode(rawValue: errorCode) else {
+                return
+            }
+            switch (error) {
+            case .objectNotFound:
+                print("File doesn't exist")
+                break
+            case .unauthorized:
+                print("User doesn't have permission to access file")
+                break
+            case .cancelled:
+                print("User cancelled the download")
+                break
+                /* ... */
+            case .unknown:
+                print("Unknown error occurred, inspect the server response")
+                break
+            default:
+                print("Another error occurred. This is a good place to retry the download.")
+                break
             }
         }
     }
-    
-    
     
     @IBAction func chooseAnother(_ sender: Any) {
         self.performSegue(withIdentifier: "searchItem", sender: self)
@@ -66,6 +105,7 @@ class ARViewController: UIViewController{
         }
     }
     
+
 
     /*
     // MARK: - Navigation

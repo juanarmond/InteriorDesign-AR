@@ -11,6 +11,7 @@ target 'InteriorDesign AR' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
+  pod 'FirebaseUI/Storage'
 
   target 'InteriorDesign ARTests' do
     inherit! :search_paths
