@@ -10,15 +10,16 @@ import UIKit
 import ARKit
 import SceneKit
 import Firebase
+import QuickLook
 
-class ARViewController: UIViewController{
+class ARViewController: UIViewController, QLPreviewControllerDataSource{
 
     
     var db: Firestore!
     var item: String!
     var id: String!
     var image: UIImage!
-    var virtualOS: SCNScene!
+    var virtualOS: Any!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,18 +41,27 @@ class ARViewController: UIViewController{
         // Create a reference to the file you want to download
         let imageRef = storageRef.child("products/qdc5StI534Q4Np0uAR8g/\(item!)/redchair.usdz")
         
+        // Create local filesystem URL
+        let localURL = URL(string: "file:///path/to/image")!
+
         // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
-        let downloadTask = imageRef.getData(maxSize: 15 * 1024 * 1024) { data, error in
+        let downloadTask = imageRef
+//            .write(toFile: localURL) { url, error in
+            .getData(maxSize: 15 * 1024 * 1024) { data, error in
             if error != nil {
                 // Uh-oh, an error occurred!
                 print("no image")
                 print(imageRef)
             } else {
                 // Data for "product" is returned
-                self.virtualOS = SCNScene(named: "\(data!)")
+                self.virtualOS = data!
                 
-                self.image = UIImage(data: data!)
-                print(self.image)
+//                self.image = UIImage(data: data!)
+                print(self.virtualOS)
+                
+                let previewController = QLPreviewController()
+                previewController.dataSource = self
+                self.present(previewController, animated: true)
             }
         }
         
@@ -93,6 +103,18 @@ class ARViewController: UIViewController{
                 break
             }
         }
+    }
+    
+    func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
+        return 1
+    }
+    
+    func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
+        let url = Bundle.main.url(forResource: "redchair", withExtension: "usdz")
+//            else {
+//            fatalError("Could not load redchair.usdz")
+//        }
+        return url! as QLPreviewItem
     }
     
     @IBAction func chooseAnother(_ sender: Any) {
