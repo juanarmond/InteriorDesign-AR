@@ -52,8 +52,6 @@ class SearchItemViewController: UIViewController, UITableViewDataSource,UITableV
                 for document in querySnapshot!.documents {
                     self.products.append(document.get("product") as! String)
                     self.productsID.append(document.get("product ID") as! String)
-//                    self.products.append((document.get("product")as! String, document.get("product ID") as! String))
-//                    print("\(document.documentID) => \(document.get("product") ?? "empty")")
                 }
                 print(self.products.count)
             }

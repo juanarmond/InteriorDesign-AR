@@ -8,7 +8,10 @@
 
 import UIKit
 import ARKit
+import SceneKit
 import Firebase
+import Foundation
+import QuickLook
 
 class ARViewController: UIViewController{
 
@@ -18,6 +21,7 @@ class ARViewController: UIViewController{
     var db: Firestore!
     var item: String!
     var id: String!
+    var image: UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,29 +29,32 @@ class ARViewController: UIViewController{
         // Do any additional setup after loading the view.
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
-        setupScene()
-        setupScene()
         print(id, " ", item)
+        
+    }
+
+    func getItem(){
+        // Get a reference to the storage service using the default Firebase App
+        let storage = Storage.storage()
+        
+        // Create a storage reference from our storage service
+        let storageRef = storage.reference()
+        // Create a reference to the file you want to download
+        let islandRef = storageRef.child("products/qdc5StI534Q4Np0uAR8g/\(String(describing: item))")
+        
+        // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
+        islandRef.getData(maxSize: 10 * 1024 * 1024) { data, error in
+            if error != nil {
+                // Uh-oh, an error occurred!
+                print("no image")
+            } else {
+                // Data for "product" is returned
+                self.image = UIImage(data: data!)
+            }
+        }
     }
     
-    func setupScene() {
-        let scene = SCNScene()
-        aRView.scene = scene
-    }
     
-    func setupConfiguration() {
-        let configuration = ARWorldTrackingConfiguration()
-        aRView.session.run(configuration)
-    }
-    
-//    func loadModel() {
-//        guard let virtualObjectScene = SCNScene(named: "Drone.scn") else { return }
-//        let wrapperNode = SCNNode()
-//        for child in virtualObjectScene.rootNode.childNodes {
-//            wrapperNode.addChildNode(child)
-//        }
-//        addChildNode(wrapperNode)
-//    }
     
     @IBAction func chooseAnother(_ sender: Any) {
         self.performSegue(withIdentifier: "searchItem", sender: self)
