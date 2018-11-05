@@ -41,23 +41,27 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
         // Create a reference to the file you want to download
         let imageRef = storageRef.child("products/qdc5StI534Q4Np0uAR8g/\(item!)/redchair.usdz")
         
+//        let imageRef = storageRef.child("products/qdc5StI534Q4Np0uAR8g/\(item!)/picture")
+        
         // Create local filesystem URL
-        let localURL = URL(string: "file:///path/to/image")!
+        let localDocumentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let localURL = URL(string: "\(localDocumentsURL)/picture.usdz")!
 
         // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
         let downloadTask = imageRef
-//            .write(toFile: localURL) { url, error in
-            .getData(maxSize: 15 * 1024 * 1024) { data, error in
+            .write(toFile: localURL) { url, error in
+//            .getData(maxSize: 15 * 1024 * 1024) { data, error in
             if error != nil {
                 // Uh-oh, an error occurred!
                 print("no image")
                 print(imageRef)
             } else {
                 // Data for "product" is returned
-                self.virtualOS = data!
+//                self.image = UIImage(data: data!)
+//                self.virtualOS = data!
                 
 //                self.image = UIImage(data: data!)
-                print(self.virtualOS)
+//                print(self.virtualOS)
                 
                 let previewController = QLPreviewController()
                 previewController.dataSource = self
@@ -74,7 +78,7 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
         
         downloadTask.observe(.success) { snapshot in
             // Upload completed successfully
-            print("Upload Sucess")
+            print("Download Sucess")
         }
         
         downloadTask.observe(.failure) { snapshot in
@@ -110,11 +114,15 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
     }
     
     func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
-        let url = Bundle.main.url(forResource: "redchair", withExtension: "usdz")
+//        let url = Bundle.main.url(forResource: "redchair", withExtension: "usdz")
+//        let url = Bundle.main.url(forResource: "picture", withExtension: "jpg")
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let fileURL = documentsURL.appendingPathComponent("picture.usdz")
+        //https://stackoverflow.com/questions/26171901/swift-write-image-from-url-to-local-file
 //            else {
 //            fatalError("Could not load redchair.usdz")
 //        }
-        return url! as QLPreviewItem
+          return fileURL as QLPreviewItem
     }
     
     @IBAction func chooseAnother(_ sender: Any) {

@@ -709,22 +709,12 @@ Get Inspire, Shop products and Find Professionals</string>
                                     <action selector="chooseAnother:" destination="mo6-wF-7D7" eventType="touchUpInside" id="JiJ-Z7-6hl"/>
                                 </connections>
                             </button>
-                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c5F-dS-zZF">
-                                <rect key="frame" x="0.0" y="75" width="414" height="661"/>
-                                <connections>
-                                    <outlet property="delegate" destination="mo6-wF-7D7" id="SYh-c5-r5y"/>
-                                </connections>
-                            </sceneKitView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="nLf-T0-num" firstAttribute="trailing" secondItem="IjX-rJ-adf" secondAttribute="trailing" constant="20" id="2lo-sA-ZXk"/>
                             <constraint firstItem="IjX-rJ-adf" firstAttribute="top" secondItem="nLf-T0-num" secondAttribute="top" constant="8" id="DRT-8c-b39"/>
                             <constraint firstItem="IjX-rJ-adf" firstAttribute="leading" secondItem="nLf-T0-num" secondAttribute="leading" constant="20" id="KAV-Tf-W3i"/>
-                            <constraint firstItem="c5F-dS-zZF" firstAttribute="top" secondItem="nLf-T0-num" secondAttribute="top" constant="55" id="Ntf-KL-Kkg"/>
-                            <constraint firstItem="c5F-dS-zZF" firstAttribute="leading" secondItem="nLf-T0-num" secondAttribute="leading" id="WPQ-ya-G79"/>
-                            <constraint firstItem="c5F-dS-zZF" firstAttribute="trailing" secondItem="nLf-T0-num" secondAttribute="trailing" id="qU1-vn-cbM"/>
-                            <constraint firstItem="c5F-dS-zZF" firstAttribute="bottom" secondItem="nLf-T0-num" secondAttribute="bottom" id="zoY-FH-Non"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nLf-T0-num"/>
                     </view>
