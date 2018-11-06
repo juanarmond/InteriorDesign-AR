@@ -14,6 +14,10 @@ import QuickLook
 
 class ARViewController: UIViewController, QLPreviewControllerDataSource{
 
+    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var descriptionField: UITextField!
+    @IBOutlet weak var companyField: UITextField!
+    @IBOutlet weak var priceField: UITextField!
     
     var db: Firestore!
     var item: String!
@@ -29,7 +33,7 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
         Firestore.firestore().settings = settings
         print(id!, " ", item!)
         getItem()
-    
+        getItemDetails()
     }
 
     func getItem(){
@@ -39,7 +43,7 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
         // Create a storage reference from our storage service
         let storageRef = storage.reference()
         // Create a reference to the file you want to download
-        let imageRef = storageRef.child("products/qdc5StI534Q4Np0uAR8g/\(item!)/redchair.usdz")
+        let imageRef = storageRef.child("products/qdc5StI534Q4Np0uAR8g/\(item!)/picture.usdz")
         
 //        let imageRef = storageRef.child("products/qdc5StI534Q4Np0uAR8g/\(item!)/picture")
         
@@ -135,6 +139,22 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
         }
     }
     
+    func getItemDetails(){
+        db = Firestore.firestore()
+        let product = db.collection("products").document(item)
+        // Get the User Information
+        product.getDocument{ (document, error) in
+            if let document = document {
+                self.nameField.text = document.get("product") as? String
+                self.descriptionField.text = document.get("description") as? String
+//                self.companyField.text = document.get("company ID") as? String
+                let cost = document.get("cost") as? Int
+                self.priceField.text = "\(String(describing: cost))"
+            } else {
+                print("Document does not exist in cache")
+            }
+        }
+    }
 
 
     /*
