@@ -14,16 +14,19 @@ import QuickLook
 
 class ARViewController: UIViewController, QLPreviewControllerDataSource{
 
-    @IBOutlet weak var nameField: UITextField!
-    @IBOutlet weak var descriptionField: UITextField!
-    @IBOutlet weak var companyField: UITextField!
-    @IBOutlet weak var priceField: UITextField!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var companyLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var quantityLabel: UILabel!
+    @IBOutlet weak var stepper: UIStepper!
     
     var db: Firestore!
     var item: String!
     var id: String!
     var image: UIImage!
     var virtualOS: Any!
+    var cost: Double!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -142,21 +145,37 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
     func getItemDetails(){
         db = Firestore.firestore()
         let product = db.collection("products").document(item)
+        let user = db.collection("users")
+        var companyID: String!
         // Get the User Information
         product.getDocument{ (document, error) in
             if let document = document {
-                self.nameField.text = document.get("product") as? String
-                self.descriptionField.text = document.get("description") as? String
-//                self.companyField.text = document.get("company ID") as? String
-                let cost = document.get("cost") as? Int
-                self.priceField.text = "\(String(describing: cost))"
+                self.nameLabel.text = document.get("product") as? String
+                self.descriptionLabel.text = document.get("description") as? String
+                companyID = document.get("company ID") as? String
+                self.cost = document.get("cost") as? Double
+                self.priceLabel.text = NSString(format: "£ %.02f", self.cost) as String
             } else {
                 print("Document does not exist in cache")
             }
+            //Get Company Name
+            user.document(companyID).getDocument{ (document, error) in
+                if let document = document {
+                    let first = document.get("first") as? String
+                    let last = document.get("last") as? String
+                    self.companyLabel.text = first! + " " + last!
+                } else {
+                    print("Document does not exist in cache")
+                }
+            }
         }
+    
     }
-
-
+    @IBAction func stepperValueChanged(_ sender: UIStepper) {
+        quantityLabel.text = Int(sender.value).description
+        self.priceLabel.text = NSString(format: "£ %.02f", (self.cost! * Double(sender.value))) as String
+    }
+    
     /*
     // MARK: - Navigation
 
