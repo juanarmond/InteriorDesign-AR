@@ -128,11 +128,13 @@ class CompanyAccountViewController: UIViewController, UIImagePickerControllerDel
         let rot = imageOrientation(image)
         //Upload Image do Cloud
         //        guard let uid = Auth.auth().currentUser?.uid else { return }
-            let storageRef = Storage.storage().reference().child("products/\(String(id))/\(String(pd))/picture/")
-            guard let imageData = rot.jpegData(compressionQuality: 0.25) else { return }
-            let metaData = StorageMetadata()
+        let storageRef = Storage.storage().reference().child("products/\(String(id))/\(String(pd))/picture.jpg/")
+//         let storageRef = Storage.storage().reference().child("products/\(String(id))/\(String(pd))/picture.usdz/")
+        guard let imageData = rot.jpegData(compressionQuality: 0.25) else { return }
+        let metaData = StorageMetadata()
             metaData.contentType = "image/jpg"
-            let uploadTask = storageRef.putData(imageData, metadata: metaData)
+//            metaData.contentType = "single object/usdz"
+        let uploadTask = storageRef.putData(imageData, metadata: metaData)
             // Add a progress observer to an upload task
             let observer = uploadTask.observe(.progress) { snapshot in
                 // A progress event occured
