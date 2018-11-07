@@ -52,7 +52,7 @@ class ARScanViewController: UIViewController {
     }
     
     @IBAction func tryScan(_ sender: Any) {
-//        self.performSegue(withIdentifier: "scan", sender: self)
+        self.performSegue(withIdentifier: "scan", sender: self)
     }
     /*
     // MARK: - Navigation

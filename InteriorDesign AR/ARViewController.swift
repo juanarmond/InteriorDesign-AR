@@ -20,6 +20,8 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var stepper: UIStepper!
+    @IBOutlet weak var progressLabel: UILabel!
+    @IBOutlet weak var progressView: UIProgressView!
     
     var db: Firestore!
     var item: String!
@@ -27,6 +29,7 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
     var image: UIImage!
     var virtualOS: Any!
     var cost: Double!
+    var percentComplete: Double = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,9 +81,11 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
         
         downloadTask.observe(.progress) { snapshot in
             // A progress event occured
-            let percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount)
+            self.percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount)
                 / Double(snapshot.progress!.totalUnitCount)
-            print(percentComplete)
+            print(Float(self.percentComplete/100))
+            self.progressLabel.text = NSString(format: "%.0f", self.percentComplete) as String + "%"
+            self.progressView.progress = Float(self.percentComplete/100)
         }
         
         downloadTask.observe(.success) { snapshot in
@@ -136,6 +141,11 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
         self.performSegue(withIdentifier: "searchItem", sender: self)
         
     }
+    
+    @IBAction func shopList(_ sender: Any) {
+        self.performSegue(withIdentifier: "shopList", sender: self)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let SearchItemViewController = segue.destination as? SearchItemViewController {
             SearchItemViewController.id = id
