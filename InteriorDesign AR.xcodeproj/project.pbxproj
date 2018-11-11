@@ -109,6 +109,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3189A5F421988C4A00441930 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				31A65C2F21592620006CA768 /* Main.storyboard */,
+				31A65C3421592624006CA768 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		3189A5F521988C5F00441930 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				31A65C2B21592620006CA768 /* AppDelegate.swift */,
+				31A65C2D21592620006CA768 /* ViewController.swift */,
+				31B925AB2160C7D1004EEB56 /* CreateAccountViewController.swift */,
+				31B925AD2160D354004EEB56 /* SignInViewController.swift */,
+				310EF7F021737F9600B95F33 /* SearchItemViewController.swift */,
+				31C1E212217C769A0018F1C0 /* TypeUserViewController.swift */,
+				31D43F512185A94700FF3170 /* CompanyAccountViewController.swift */,
+				31875B86218DC23500FA5966 /* ARViewController.swift */,
+				31875B88218DDD2D00FA5966 /* ARScanViewController.swift */,
+				31436B002193018E00E7DAD8 /* ScanViewController.swift */,
+				31436B022193056000E7DAD8 /* shopListViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		31A65C1F21592620006CA768 = {
 			isa = PBXGroup;
 			children = (
@@ -135,22 +162,11 @@
 		31A65C2A21592620006CA768 /* InteriorDesign AR */ = {
 			isa = PBXGroup;
 			children = (
-				31A65C2B21592620006CA768 /* AppDelegate.swift */,
-				31A65C2D21592620006CA768 /* ViewController.swift */,
-				31A65C2F21592620006CA768 /* Main.storyboard */,
+				3189A5F521988C5F00441930 /* Controller */,
+				3189A5F421988C4A00441930 /* Storyboard */,
 				31A65C3221592624006CA768 /* Assets.xcassets */,
-				31A65C3421592624006CA768 /* LaunchScreen.storyboard */,
 				31A65C3721592624006CA768 /* Info.plist */,
 				31A65C5921592C31006CA768 /* GoogleService-Info.plist */,
-				31B925AB2160C7D1004EEB56 /* CreateAccountViewController.swift */,
-				31B925AD2160D354004EEB56 /* SignInViewController.swift */,
-				310EF7F021737F9600B95F33 /* SearchItemViewController.swift */,
-				31C1E212217C769A0018F1C0 /* TypeUserViewController.swift */,
-				31D43F512185A94700FF3170 /* CompanyAccountViewController.swift */,
-				31875B86218DC23500FA5966 /* ARViewController.swift */,
-				31875B88218DDD2D00FA5966 /* ARScanViewController.swift */,
-				31436B002193018E00E7DAD8 /* ScanViewController.swift */,
-				31436B022193056000E7DAD8 /* shopListViewController.swift */,
 			);
 			path = "InteriorDesign AR";
 			sourceTree = "<group>";
