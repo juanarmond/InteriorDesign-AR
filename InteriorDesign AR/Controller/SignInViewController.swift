@@ -22,10 +22,12 @@ class SignInViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         // [START setup]
+        connectFirebase()
+    }
+    
+    func connectFirebase() {
         let settings = FirestoreSettings()
-        
         Firestore.firestore().settings = settings
-        // [END setup]
         db = Firestore.firestore()
     }
     
@@ -48,6 +50,7 @@ class SignInViewController: UIViewController {
                         print("Error getting documents: \(err)")
                     } else if querySnapshot!.isEmpty{
                         print("Document not  found)")
+                        self.showAlert()
                     } else {
                         for document in (querySnapshot?.documents)!{
                             if let em = document.data()["email"] as? String {
@@ -69,6 +72,13 @@ class SignInViewController: UIViewController {
                     }
             }
         }
+    }
+    
+    func showAlert() {
+        let alertController = UIAlertController(title: "User Details", message:
+            "Incorrect Email and Password", preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
+        self.present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func signUp(_ sender: Any) {

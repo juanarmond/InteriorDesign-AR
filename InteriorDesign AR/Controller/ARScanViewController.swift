@@ -14,17 +14,22 @@ class ARScanViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     var db: Firestore!
     var id: String!
+    var products: [String] = []
+    var productsID: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let settings = FirestoreSettings()
-        
-        Firestore.firestore().settings = settings
-        // [END setup]
-        db = Firestore.firestore()
+        connectFirebase()
         getUser()
+        getItems()
+    }
+    
+    func connectFirebase() {
+        let settings = FirestoreSettings()
+        Firestore.firestore().settings = settings
+        db = Firestore.firestore()
     }
     
     func getUser(){
@@ -41,9 +46,27 @@ class ARScanViewController: UIViewController {
             }
         }
     }
+    
+    func getItems(){
+        db = Firestore.firestore()
+        db.collection("products").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    self.products.append(document.get("product") as! String)
+                    self.productsID.append(document.get("product ID") as! String)
+                }
+                print(self.products.count)
+            }
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let SearchItemViewController = segue.destination as? SearchItemViewController {
             SearchItemViewController.id = id
+            SearchItemViewController.products = products
+            SearchItemViewController.productsID = productsID
         }
         if let ScanViewController = segue.destination as? ScanViewController {
             ScanViewController.id = id

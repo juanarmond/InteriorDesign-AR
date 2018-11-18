@@ -26,13 +26,19 @@ class CompanyAccountViewController: UIViewController, UIImagePickerControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        // Do any additional setup after loading the view.
+        connectFirebase()
+        // Get the User Information
+        getUser()
+    }
+    func connectFirebase() {
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
-        // [END setup]
         db = Firestore.firestore()
-        let user = db.collection("users").document(id)
+    }
 
-//      Get the User Information
+    func getUser() {
+        let user = db.collection("users").document(id)
         user.getDocument{ (document, error) in
             if let document = document {
                 let first = document.get("first") as? String
@@ -42,12 +48,10 @@ class CompanyAccountViewController: UIViewController, UIImagePickerControllerDel
                 print("Document does not exist in cache")
             }
         }
-
     }
     
     @IBAction func upload(_ sender: Any) {
         
-
         let imagePickerController = UIImagePickerController()
         let docPickerController = UIDocumentBrowserViewController()
 
@@ -62,11 +66,11 @@ class CompanyAccountViewController: UIViewController, UIImagePickerControllerDel
                 self.present(imagePickerController, animated: true, completion: nil)
             }
         }))
-
-        actionSheet.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { (action:UIAlertAction) in
-            imagePickerController.sourceType = .photoLibrary
-            self.present(imagePickerController, animated: true, completion: nil)
-        }))
+//
+//        actionSheet.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { (action:UIAlertAction) in
+//            imagePickerController.sourceType = .photoLibrary
+//            self.present(imagePickerController, animated: true, completion: nil)
+//        }))
 
         actionSheet.addAction(UIAlertAction(title: "Browse Files", style: .default, handler: { (action:UIAlertAction) in
             docPickerController.loadView()
@@ -82,6 +86,7 @@ class CompanyAccountViewController: UIViewController, UIImagePickerControllerDel
         if let product = self.nameField.text, let pdescription = self.pdescriptionField.text, let cost = self.costField.text{
             if product.isEmpty||product == "Insert name."||pdescription.isEmpty||pdescription == "Insert description."||cost.isEmpty||cost == "Insert value."{
                 print ("Please fill all fields")
+                self.showAlertDetails()
             } else{
                 let collection = db.collection("products")
                 collection
@@ -115,6 +120,7 @@ class CompanyAccountViewController: UIViewController, UIImagePickerControllerDel
                             }
                         }else{
                             print ("Product already in the database")
+                            self.showAlertProducts()
                         }
                 }
             }
@@ -254,6 +260,21 @@ class CompanyAccountViewController: UIViewController, UIImagePickerControllerDel
             ARScanViewController.id = id
         }
     }
+    
+    func showAlertProducts() {
+        let alertController = UIAlertController(title: "Product Details", message:
+            "Product already in the database", preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func showAlertDetails() {
+        let alertController = UIAlertController(title: "Product Details", message:
+            "Please fill all fields", preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

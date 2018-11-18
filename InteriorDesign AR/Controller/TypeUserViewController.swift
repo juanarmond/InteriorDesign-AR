@@ -20,19 +20,23 @@ class TypeUserViewController: UIViewController, UIImagePickerControllerDelegate,
     var id: String!
     var db: Firestore!
 //    var photo: UIImage!
-    
    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        connectFirebase()
+        // Get the User Information
+        getUser()
+    }
+    func connectFirebase() {
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
-        // [END setup]
         db = Firestore.firestore()
+    }
+    
+    func getUser() {
         let user = db.collection("users").document(id)
-
-        // Get the User Information
         user.getDocument{ (document, error) in
             if let document = document {
                 let first = document.get("first") as? String

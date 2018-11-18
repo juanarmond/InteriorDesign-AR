@@ -25,9 +25,12 @@ class CreateAccountViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         // [START setup]
+        connectFirebase()
+    }
+    
+    func connectFirebase() {
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
-        // [END setup]
         db = Firestore.firestore()
     }
     
@@ -73,11 +76,19 @@ class CreateAccountViewController: UIViewController {
                             }
                         }else{
                             print ("Email already in the database")
+                            self.showAlert()
                         }
                 }
             }
             
         }
+    }
+    
+    func showAlert() {
+        let alertController = UIAlertController(title: "Email", message:
+            "Email already in the database!", preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
+        self.present(alertController, animated: true, completion: nil)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

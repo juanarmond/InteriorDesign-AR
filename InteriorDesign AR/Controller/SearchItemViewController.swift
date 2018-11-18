@@ -19,8 +19,8 @@ class SearchItemViewController: UIViewController, UITableViewDataSource,UITableV
      */
     var id: String!
     var db: Firestore!
-    var products: [String] = []
-    var productsID: [String] = []
+    var products: [String]!
+    var productsID: [String]!
     var proImage:[UIImage] = []
     var sortedID : [String] = []
     var refresher: UIRefreshControl!
@@ -33,26 +33,42 @@ class SearchItemViewController: UIViewController, UITableViewDataSource,UITableV
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        connectFirebase()
+        getItems()
+        refreshList()
+        refresh()
+    }
+    
+    func connectFirebase() {
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
-        // [END setup]
-        getItems()
+        db = Firestore.firestore()
+    }
+    
+    func refreshList(){
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: "pull to refresh")
         refresher.addTarget(self, action: #selector(SearchItemViewController.refresh), for: UIControl.Event.valueChanged)
         self.tableView.addSubview(refresher)
-        refresh()
     }
     
     func getItems(){
+        var notFound: Bool = true
         db = Firestore.firestore()
         db.collection("products").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-                    self.products.append(document.get("product") as! String)
-                    self.productsID.append(document.get("product ID") as! String)
+                    for docID in self.productsID{
+                        if(document.get("product ID")as! String == docID){
+                            notFound = false
+                        }
+                    }
+                    if(notFound){
+                        self.products.append(document.get("product") as! String)
+                        self.productsID.append(document.get("product ID") as! String)
+                    }
                 }
                 print(self.products.count)
             }
@@ -170,15 +186,23 @@ class SearchItemViewController: UIViewController, UITableViewDataSource,UITableV
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        index = tableView.indexPathForSelectedRow?.row
-//        getItem(index: index)
-        item = self.sortedID[self.index]
-        print(item!)
         if  segue.identifier == "ar",
             let ARViewController = segue.destination as? ARViewController{
-                ARViewController.item = self.item!
-                ARViewController.id = self.id!
+                index = tableView.indexPathForSelectedRow?.row
+                item = self.sortedID[self.index]
+                print(item!)
+                ARViewController.item = item
+                ARViewController.id = id
+                ARViewController.products = products
+                ARViewController.productsID = productsID
             }
+        if let ARScanViewController = segue.destination as? ARScanViewController {
+            ARScanViewController.id = id
+        }
+    }
+
+    @IBAction func goBack(_ sender: Any) {
+        self.performSegue(withIdentifier: "arScan", sender: self)
     }
     
     /*

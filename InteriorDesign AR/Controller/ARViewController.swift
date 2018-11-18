@@ -26,20 +26,28 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
     var db: Firestore!
     var item: String!
     var id: String!
-    var image: UIImage!
-    var virtualOS: Any!
+//    var image: UIImage!
+//    var virtualOS: Any!
     var cost: Double!
     var percentComplete: Double = 0
+    var products: [String]!
+    var productsID: [String]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        let settings = FirestoreSettings()
-        Firestore.firestore().settings = settings
-        print(id!, " ", item!)
+        connectFirebase()
         getItem()
         getItemDetails()
+        getItems()
+    }
+    
+    func connectFirebase() {
+        let settings = FirestoreSettings()
+        Firestore.firestore().settings = settings
+        db = Firestore.firestore()
+        print(id!, " ", item!)
     }
 
     func getItem(){
@@ -50,29 +58,16 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
         let storageRef = storage.reference()
         // Create a reference to the file you want to download
         let imageRef = storageRef.child("products/qdc5StI534Q4Np0uAR8g/\(item!)/picture.usdz")
-        
-//        let imageRef = storageRef.child("products/qdc5StI534Q4Np0uAR8g/\(item!)/picture")
-        
         // Create local filesystem URL
         let localDocumentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let localURL = URL(string: "\(localDocumentsURL)/picture.usdz")!
-
-        // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
         let downloadTask = imageRef
             .write(toFile: localURL) { url, error in
-//            .getData(maxSize: 15 * 1024 * 1024) { data, error in
             if error != nil {
                 // Uh-oh, an error occurred!
                 print("no image")
                 print(imageRef)
             } else {
-                // Data for "product" is returned
-//                self.image = UIImage(data: data!)
-//                self.virtualOS = data!
-                
-//                self.image = UIImage(data: data!)
-//                print(self.virtualOS)
-                
                 let previewController = QLPreviewController()
                 previewController.dataSource = self
                 self.present(previewController, animated: true)
@@ -126,19 +121,14 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
     }
     
     func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
-//        let url = Bundle.main.url(forResource: "redchair", withExtension: "usdz")
-//        let url = Bundle.main.url(forResource: "picture", withExtension: "jpg")
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let fileURL = documentsURL.appendingPathComponent("picture.usdz")
-        //https://stackoverflow.com/questions/26171901/swift-write-image-from-url-to-local-file
-//            else {
-//            fatalError("Could not load redchair.usdz")
-//        }
           return fileURL as QLPreviewItem
     }
     
     @IBAction func chooseAnother(_ sender: Any) {
         self.performSegue(withIdentifier: "searchItem", sender: self)
+        // Cancel the download
         
     }
     
@@ -149,6 +139,9 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let SearchItemViewController = segue.destination as? SearchItemViewController {
             SearchItemViewController.id = id
+            SearchItemViewController.products = products
+            SearchItemViewController.productsID = productsID
+            
         }
     }
     
@@ -181,6 +174,30 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
         }
     
     }
+    
+    func getItems(){
+        var notFound: Bool = true
+        db = Firestore.firestore()
+        db.collection("products").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    for docID in self.productsID{
+                        if(document.get("product ID")as! String == docID){
+                            notFound = false
+                        }
+                    }
+                    if(notFound){
+                        self.products.append(document.get("product") as! String)
+                        self.productsID.append(document.get("product ID") as! String)
+                    }
+                }
+                print(self.products.count)
+            }
+        }
+    }
+    
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
         quantityLabel.text = Int(sender.value).description
         self.priceLabel.text = NSString(format: "£ %.02f", (self.cost! * Double(sender.value))) as String
