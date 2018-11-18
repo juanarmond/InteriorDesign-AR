@@ -16,10 +16,11 @@ class TypeUserViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var emailField: UILabel!
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
-    
+  
+    var products: [String]!
+    var productsID: [String]!
     var id: String!
     var db: Firestore!
-//    var photo: UIImage!
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,7 @@ class TypeUserViewController: UIViewController, UIImagePickerControllerDelegate,
         connectFirebase()
         // Get the User Information
         getUser()
+        getItems()
     }
     func connectFirebase() {
         let settings = FirestoreSettings()
@@ -45,6 +47,29 @@ class TypeUserViewController: UIViewController, UIImagePickerControllerDelegate,
                 self.emailField.text = document.get("email") as? String
             } else {
                 print("Document does not exist in cache")
+            }
+        }
+    }
+    
+    func getItems(){
+        var notFound: Bool = true
+        db = Firestore.firestore()
+        db.collection("products").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    for docID in self.productsID{
+                        if(document.get("product ID")as! String == docID){
+                            notFound = false
+                        }
+                    }
+                    if(notFound){
+                        self.products.append(document.get("product") as! String)
+                        self.productsID.append(document.get("product ID") as! String)
+                    }
+                }
+                print(self.products.count)
             }
         }
     }
@@ -215,6 +240,8 @@ class TypeUserViewController: UIViewController, UIImagePickerControllerDelegate,
         }
         if let AccountViewController = segue.destination as? SearchItemViewController {
             AccountViewController.id = id
+            AccountViewController.products = products
+            AccountViewController.productsID = productsID
         }
     }
 
