@@ -17,8 +17,8 @@ class TypeUserViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
   
-    var products: [String]!
-    var productsID: [String]!
+    var products: [String] = []
+    var productsID: [String] = []
     var id: String!
     var db: Firestore!
    
@@ -52,22 +52,15 @@ class TypeUserViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     func getItems(){
-        var notFound: Bool = true
         db = Firestore.firestore()
         db.collection("products").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-                    for docID in self.productsID{
-                        if(document.get("product ID")as! String == docID){
-                            notFound = false
-                        }
-                    }
-                    if(notFound){
-                        self.products.append(document.get("product") as! String)
-                        self.productsID.append(document.get("product ID") as! String)
-                    }
+                    self.products.append(document.get("product") as! String)
+                    self.productsID.append(document.get("product ID") as! String)
+//                    print("\(document.get("product"))")
                 }
                 print(self.products.count)
             }
