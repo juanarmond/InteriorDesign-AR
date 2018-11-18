@@ -6,6 +6,9 @@
   "resources" : [
     {
       "filename" : "photoFrame.arobject"
+    },
+    {
+      "filename" : "photoFrame2.arobject"
     }
   ]
 }

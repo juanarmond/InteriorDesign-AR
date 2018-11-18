@@ -53,6 +53,12 @@ class ScanViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.pause()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let ARScanViewController = segue.destination as? ARScanViewController {
+            ARScanViewController.id = id
+        }
+    }
+    
     // MARK: - ARSCNViewDelegate
     
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
@@ -71,7 +77,7 @@ class ScanViewController: UIViewController, ARSCNViewDelegate {
             plane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
             
             let planeNode = SCNNode(geometry: plane)
-            planeNode.position = SCNVector3Make(objectAnchor.referenceObject.center.x, objectAnchor.referenceObject.center.y + 0.35, objectAnchor.referenceObject.center.z)
+            planeNode.position = SCNVector3Make(objectAnchor.referenceObject.center.x, objectAnchor.referenceObject.center.y + 0.2, objectAnchor.referenceObject.center.z)
             
             node.addChildNode(planeNode)
             
