@@ -413,7 +413,7 @@ Get Inspire, Shop products and Find Professionals</string>
                                     <constraint firstAttribute="height" constant="25" id="Lsi-TE-g5a"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                <state key="normal" title="Upload 3D Picture">
+                                <state key="normal" title="Upload 3D Object">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
@@ -711,7 +711,7 @@ Get Inspire, Shop products and Find Professionals</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8YU-nb-EfE">
-                                <rect key="frame" x="20" y="248" width="100" height="20"/>
+                                <rect key="frame" x="20" y="249" width="100" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="xsO-KS-cwB"/>
                                 </constraints>
@@ -740,13 +740,13 @@ Get Inspire, Shop products and Find Professionals</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Price:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6c-qV-koy">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6c-qV-koy">
                                 <rect key="frame" x="20" y="520" width="100" height="36"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="QZU-c2-h4P">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="QZU-c2-h4P">
                                 <rect key="frame" x="300" y="453" width="94" height="29"/>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -770,31 +770,31 @@ Get Inspire, Shop products and Find Professionals</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jts-Cu-l53">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jts-Cu-l53">
                                 <rect key="frame" x="137" y="310" width="257" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Company" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fux-tK-ytO">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fux-tK-ytO">
                                 <rect key="frame" x="137" y="383" width="257" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bfr-oR-wE9">
-                                <rect key="frame" x="137" y="526" width="257" height="21"/>
+                                <rect key="frame" x="137" y="527" width="257" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBZ-gN-axI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBZ-gN-axI">
                                 <rect key="frame" x="137" y="457" width="165" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hde-bc-ycj">
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hde-bc-ycj">
                                 <rect key="frame" x="220" y="599" width="174" height="2"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -805,13 +805,13 @@ Get Inspire, Shop products and Find Professionals</string>
                                 <color key="progressTintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="trackTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Download:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khw-z1-j7K">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Download:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khw-z1-j7K">
                                 <rect key="frame" x="23" y="589" width="97" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hnn-tp-CIw">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hnn-tp-CIw">
                                 <rect key="frame" x="154" y="588" width="25" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -1035,13 +1035,42 @@ Get Inspire, Shop products and Find Professionals</string>
                     <view key="view" contentMode="scaleToFill" id="cft-Ia-YEg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d8c-8Q-Zz5">
+                                <rect key="frame" x="0.0" y="20" width="414" height="658"/>
+                            </arscnView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lss-6q-wxx">
+                                <rect key="frame" x="20" y="686" width="374" height="39"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="goBack:" destination="dyB-mz-KZt" eventType="touchUpInside" id="DE8-in-zhv"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="d8c-8Q-Zz5" firstAttribute="top" secondItem="R7j-Ng-hvT" secondAttribute="top" id="C7j-6X-eh7"/>
+                            <constraint firstItem="lss-6q-wxx" firstAttribute="top" secondItem="d8c-8Q-Zz5" secondAttribute="bottom" constant="8" symbolic="YES" id="WKv-WO-m4y"/>
+                            <constraint firstItem="d8c-8Q-Zz5" firstAttribute="leading" secondItem="cft-Ia-YEg" secondAttribute="leading" id="any-HL-iOV"/>
+                            <constraint firstItem="lss-6q-wxx" firstAttribute="leading" secondItem="cft-Ia-YEg" secondAttribute="leadingMargin" id="fE5-V2-X2D"/>
+                            <constraint firstItem="R7j-Ng-hvT" firstAttribute="bottom" secondItem="lss-6q-wxx" secondAttribute="bottom" constant="11" id="i0g-yD-4SF"/>
+                            <constraint firstItem="d8c-8Q-Zz5" firstAttribute="centerX" secondItem="lss-6q-wxx" secondAttribute="centerX" id="oET-RZ-qWn"/>
+                            <constraint firstAttribute="trailing" secondItem="d8c-8Q-Zz5" secondAttribute="trailing" id="tu6-d1-d34"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="R7j-Ng-hvT"/>
                     </view>
+                    <connections>
+                        <outlet property="sceneView" destination="d8c-8Q-Zz5" id="gyO-tv-l9r"/>
+                        <segue destination="4Xo-6g-loL" kind="presentation" identifier="arScan" id="fKD-9Z-EdV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0vq-JD-ACY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1329" y="995"/>
+            <point key="canvasLocation" x="1328.985507246377" y="994.56521739130437"/>
         </scene>
     </scenes>
     <resources>
@@ -1050,9 +1079,9 @@ Get Inspire, Shop products and Find Professionals</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Iek-Rn-iVG"/>
-        <segue reference="8AS-Rw-itL"/>
-        <segue reference="ce8-G1-HZB"/>
-        <segue reference="c9V-Bc-Mkx"/>
+        <segue reference="R5d-pv-fen"/>
+        <segue reference="fKD-9Z-EdV"/>
+        <segue reference="oS4-An-rgo"/>
         <segue reference="JBs-OZ-aXJ"/>
     </inferredMetricsTieBreakers>
 </document>

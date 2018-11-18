@@ -22,6 +22,8 @@
 		31A65C5A21592C31006CA768 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31A65C5921592C31006CA768 /* GoogleService-Info.plist */; };
 		31B925AC2160C7D1004EEB56 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B925AB2160C7D1004EEB56 /* CreateAccountViewController.swift */; };
 		31B925AE2160D354004EEB56 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B925AD2160D354004EEB56 /* SignInViewController.swift */; };
+		31B932B821A17D8A00294ABE /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 31B932B721A17D8A00294ABE /* art.scnassets */; };
+		31B932BA21A17FA800294ABE /* ProductInfo.sks in Resources */ = {isa = PBXBuildFile; fileRef = 31B932B921A17FA800294ABE /* ProductInfo.sks */; };
 		31C1E213217C769A0018F1C0 /* TypeUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C1E212217C769A0018F1C0 /* TypeUserViewController.swift */; };
 		31D43F522185A94700FF3170 /* CompanyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D43F512185A94700FF3170 /* CompanyAccountViewController.swift */; };
 		4346C43EC4D2E7EFC4C06B09 /* Pods_InteriorDesign_ARUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 106ED5350BF525A0FBDD294C /* Pods_InteriorDesign_ARUITests.framework */; };
@@ -72,6 +74,8 @@
 		31A65C5921592C31006CA768 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		31B925AB2160C7D1004EEB56 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		31B925AD2160D354004EEB56 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		31B932B721A17D8A00294ABE /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		31B932B921A17FA800294ABE /* ProductInfo.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ProductInfo.sks; sourceTree = "<group>"; };
 		31C1E212217C769A0018F1C0 /* TypeUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeUserViewController.swift; sourceTree = "<group>"; };
 		31D43F512185A94700FF3170 /* CompanyAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyAccountViewController.swift; sourceTree = "<group>"; };
 		3AC7C59092E8C0FD62C3EF8E /* Pods-InteriorDesign ARUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InteriorDesign ARUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InteriorDesign ARUITests/Pods-InteriorDesign ARUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -165,6 +169,8 @@
 				3189A5F521988C5F00441930 /* Controller */,
 				3189A5F421988C4A00441930 /* Storyboard */,
 				31A65C3221592624006CA768 /* Assets.xcassets */,
+				31B932B921A17FA800294ABE /* ProductInfo.sks */,
+				31B932B721A17D8A00294ABE /* art.scnassets */,
 				31A65C3721592624006CA768 /* Info.plist */,
 				31A65C5921592C31006CA768 /* GoogleService-Info.plist */,
 			);
@@ -321,7 +327,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				31A65C3621592624006CA768 /* LaunchScreen.storyboard in Resources */,
+				31B932BA21A17FA800294ABE /* ProductInfo.sks in Resources */,
 				31A65C5A21592C31006CA768 /* GoogleService-Info.plist in Resources */,
+				31B932B821A17D8A00294ABE /* art.scnassets in Resources */,
 				31A65C3321592624006CA768 /* Assets.xcassets in Resources */,
 				31A65C3121592620006CA768 /* Main.storyboard in Resources */,
 			);

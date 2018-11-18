@@ -45,6 +45,9 @@ class ARScanViewController: UIViewController {
         if let SearchItemViewController = segue.destination as? SearchItemViewController {
             SearchItemViewController.id = id
         }
+        if let ScanViewController = segue.destination as? ScanViewController {
+            ScanViewController.id = id
+        }
     }
     
     @IBAction func tryAR(_ sender: Any) {
