@@ -927,35 +927,52 @@ Get Inspire, Shop products and Find Professionals</string>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shopping List" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mem-cb-uQU">
                                 <rect key="frame" x="20" y="47" width="374" height="41"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="41" id="AKs-GS-wnd"/>
+                                    <constraint firstAttribute="height" constant="41" id="Fiu-EO-Ql3"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="33"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H71-II-tGe">
+                                <rect key="frame" x="20" y="598" width="374" height="39"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <state key="normal" title="Add More Items">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="goBack:" destination="ONS-HL-EkF" eventType="touchUpInside" id="vDD-Zb-CTF"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lKg-Dt-vil">
-                                <rect key="frame" x="20" y="653" width="374" height="39"/>
+                                <rect key="frame" x="20" y="667" width="374" height="39"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="Buy Item">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <connections>
-                                    <action selector="shopList:" destination="mo6-wF-7D7" eventType="touchUpInside" id="7RY-gd-eEq"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="mem-cb-uQU" firstAttribute="trailing" secondItem="lKg-Dt-vil" secondAttribute="trailing" id="3a7-4h-8go"/>
-                            <constraint firstItem="uKx-gs-j5P" firstAttribute="bottom" secondItem="lKg-Dt-vil" secondAttribute="bottom" constant="44" id="CvU-U3-Hvg"/>
-                            <constraint firstItem="mem-cb-uQU" firstAttribute="leading" secondItem="E0S-zV-z4d" secondAttribute="leadingMargin" id="Pkk-M4-pGB"/>
-                            <constraint firstItem="mem-cb-uQU" firstAttribute="leading" secondItem="lKg-Dt-vil" secondAttribute="leading" id="dnL-BE-cyW"/>
-                            <constraint firstItem="mem-cb-uQU" firstAttribute="trailing" secondItem="E0S-zV-z4d" secondAttribute="trailingMargin" id="grk-u6-4KQ"/>
-                            <constraint firstItem="mem-cb-uQU" firstAttribute="top" secondItem="uKx-gs-j5P" secondAttribute="top" constant="27" id="iO7-1Z-q61"/>
+                            <constraint firstItem="uKx-gs-j5P" firstAttribute="bottom" secondItem="lKg-Dt-vil" secondAttribute="bottom" constant="30" id="0vy-re-pJL"/>
+                            <constraint firstItem="mem-cb-uQU" firstAttribute="trailing" secondItem="H71-II-tGe" secondAttribute="trailing" id="4jD-3l-bQw"/>
+                            <constraint firstItem="uKx-gs-j5P" firstAttribute="trailing" secondItem="lKg-Dt-vil" secondAttribute="trailing" constant="20" id="5V6-ca-hYv"/>
+                            <constraint firstItem="mem-cb-uQU" firstAttribute="top" secondItem="uKx-gs-j5P" secondAttribute="top" constant="27" id="7AX-XG-Jdp"/>
+                            <constraint firstItem="mem-cb-uQU" firstAttribute="leading" secondItem="H71-II-tGe" secondAttribute="leading" id="8yp-16-2wa"/>
+                            <constraint firstItem="lKg-Dt-vil" firstAttribute="top" secondItem="H71-II-tGe" secondAttribute="bottom" constant="30" id="FTw-XL-g3s"/>
+                            <constraint firstItem="uKx-gs-j5P" firstAttribute="bottom" secondItem="lKg-Dt-vil" secondAttribute="bottom" constant="30" id="Ndc-mg-Mh4"/>
+                            <constraint firstItem="H71-II-tGe" firstAttribute="leading" secondItem="lKg-Dt-vil" secondAttribute="leading" id="VWW-fd-lA0"/>
+                            <constraint firstItem="mem-cb-uQU" firstAttribute="leading" secondItem="E0S-zV-z4d" secondAttribute="leadingMargin" id="WLW-09-1wa"/>
+                            <constraint firstItem="lKg-Dt-vil" firstAttribute="leading" secondItem="uKx-gs-j5P" secondAttribute="leading" constant="20" id="box-BL-cWA"/>
+                            <constraint firstItem="mem-cb-uQU" firstAttribute="trailing" secondItem="E0S-zV-z4d" secondAttribute="trailingMargin" id="gKQ-Do-eLP"/>
+                            <constraint firstItem="H71-II-tGe" firstAttribute="trailing" secondItem="lKg-Dt-vil" secondAttribute="trailing" id="o5F-6t-OpZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uKx-gs-j5P"/>
                     </view>
+                    <connections>
+                        <segue destination="chM-TF-5hX" kind="presentation" identifier="searchItem" id="X23-o7-eot"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zo5-1Z-d4r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1098,11 +1115,10 @@ Get Inspire, Shop products and Find Professionals</string>
         <image name="welcome" width="2484" height="1656"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7ar-zh-eV7"/>
-        <segue reference="Iek-Rn-iVG"/>
-        <segue reference="8AS-Rw-itL"/>
-        <segue reference="Qhk-hL-ATh"/>
+        <segue reference="EwG-VH-Ypm"/>
+        <segue reference="R5d-pv-fen"/>
+        <segue reference="ce8-G1-HZB"/>
         <segue reference="c9V-Bc-Mkx"/>
-        <segue reference="JBs-OZ-aXJ"/>
+        <segue reference="PU0-TC-m3D"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -26,8 +26,6 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
     var db: Firestore!
     var item: String!
     var id: String!
-//    var image: UIImage!
-//    var virtualOS: Any!
     var cost: Double!
     var percentComplete: Double = 0
     var products: [String]!
@@ -141,6 +139,12 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
             SearchItemViewController.id = id
             SearchItemViewController.products = products
             SearchItemViewController.productsID = productsID
+            
+        }
+        if let shopListViewController = segue.destination as? shopListViewController {
+            shopListViewController.id = id
+            shopListViewController.products = products
+            shopListViewController.productsID = productsID
             
         }
     }
