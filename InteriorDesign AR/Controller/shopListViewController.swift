@@ -63,20 +63,24 @@ class shopListViewController: UIViewController, UITableViewDataSource,UITableVie
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Item                                       Qty     Cost"
+        let item = "Item"
+        let qty = "Qty"
+        return item.padding(toLength: 35, withPad: " ", startingAt: 0) + qty.padding(toLength: 15, withPad: " ", startingAt: 0) + "Cost"
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath )
-        cell.textLabel?.text = shopListDic[indexPath.row]!.0
-//            + "             " + "\(shopListDic[indexPath.row]!.1)"
-//            + "    " + "\(shopListDic[indexPath.row]!.2)"
-        cell.detailTextLabel?.text = "\(shopListDic[indexPath.row]!.1)        £\(shopListDic[indexPath.row]!.2)"
+        let costF : String = NSString(format: "%.02f", shopListDic[indexPath.row]!.2) as String
+        let qty : String = "\(shopListDic[indexPath.row]!.1)".padding(toLength: 15-costF.count, withPad: " ", startingAt: 0)
+        let pound : String = "£".padding(toLength: 8-costF.count, withPad: " ", startingAt: 0)
+        cell.textLabel?.text = shopListDic[indexPath.row]!.0.padding(toLength: 20, withPad: " ", startingAt: 0)
+        cell.detailTextLabel?.text = qty + pound + costF
+       
         return cell
     }
     
-    
 
+    
     @IBAction func goBack(_ sender: Any) {
         self.performSegue(withIdentifier: "searchItem", sender: self)
     }
