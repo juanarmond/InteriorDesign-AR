@@ -19,6 +19,7 @@ class shopListViewController: UIViewController, UITableViewDataSource,UITableVie
     var products: [String]!
     var productsID: [String]!
     var shopListDic : [Int: (String, Int, Double)] = [:]
+     var countItens: Int = 0;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,11 +62,16 @@ class shopListViewController: UIViewController, UITableViewDataSource,UITableVie
         return shopListDic.count
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Item                                       Qty     Cost"
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath )
         cell.textLabel?.text = shopListDic[indexPath.row]!.0
-//            + "    " + "\(shopListDic[indexPath.row]!.1)" + "    " + "\(shopListDic[indexPath.row]!.2)"
-//        }
+//            + "             " + "\(shopListDic[indexPath.row]!.1)"
+//            + "    " + "\(shopListDic[indexPath.row]!.2)"
+        cell.detailTextLabel?.text = "\(shopListDic[indexPath.row]!.1)        £\(shopListDic[indexPath.row]!.2)"
         return cell
     }
     
@@ -81,6 +87,7 @@ class shopListViewController: UIViewController, UITableViewDataSource,UITableVie
                 SearchItemViewController.products = products
                 SearchItemViewController.productsID = productsID
                 SearchItemViewController.shopListDic = shopListDic
+                SearchItemViewController.countItens = countItens
         }
     }
     /*

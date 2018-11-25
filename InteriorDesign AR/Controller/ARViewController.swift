@@ -135,6 +135,7 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
     }
     
     @IBAction func addShopList(_ sender: Any) {
+        var notFound: Bool = true
         let totalCost = cost*Double(quantity)
 //        print("Shopping Item")
         if (shopListDic.isEmpty) {
@@ -143,17 +144,25 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
             shopListDic = [countItens:(itemName,quantity, totalCost)]
         }else {
             for (key,(value,value2, value3)) in shopListDic {
-                if (value == itemName) {
+                if (value == itemName && value2 != quantity) {
                     //Update item quantity
                     showAlertUpdateItem()
                     shopListDic[key] = (itemName, quantity,totalCost)
-                }else{
-                    //add new item
-                    print("Add new Item")
-                    countItens+=1
-                    showAlertAddedItem()
-                    shopListDic[countItens] = (itemName, quantity,totalCost)
                 }
+                if (value == itemName && value2 == quantity) {
+                    showAlertUpdateQty()
+                }
+                if (value == itemName){
+                    notFound = false
+                }
+            }
+            if (notFound){
+                //add new item
+                print("Add new Item")
+                print(countItens)
+                countItens+=1
+                showAlertAddedItem()
+                shopListDic[countItens] = (itemName, quantity,totalCost)
             }
         }
     }
@@ -178,6 +187,7 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
                 SearchItemViewController.products = products
                 SearchItemViewController.productsID = productsID
                 SearchItemViewController.shopListDic = shopListDic
+                SearchItemViewController.countItens = countItens
         }
 //        if  segue.identifier == "shopList",
            if let shopListViewController = segue.destination as? shopListViewController {
@@ -185,6 +195,7 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
                 shopListViewController.products = products
                 shopListViewController.productsID = productsID
                 shopListViewController.shopListDic = shopListDic
+                shopListViewController.countItens = countItens
         }
         for (key,(value,value2, value3)) in shopListDic {
             print("Shopping List Added")
@@ -270,6 +281,13 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
     func showAlertUpdateItem() {
         let alertController = UIAlertController(title: "Item Updated", message:
             "This item has been updated", preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func showAlertUpdateQty() {
+        let alertController = UIAlertController(title: "Item Already Added", message:
+            "Item already added to shopping list", preferredStyle: UIAlertController.Style.alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
         self.present(alertController, animated: true, completion: nil)
     }

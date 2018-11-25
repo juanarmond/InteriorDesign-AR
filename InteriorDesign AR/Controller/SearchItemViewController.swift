@@ -26,6 +26,7 @@ class SearchItemViewController: UIViewController, UITableViewDataSource,UITableV
     var item: String!
     var index: Int!
     var shopListDic : [Int: (String, Int, Double)] = [:]
+    var countItens: Int = 0;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -194,6 +195,7 @@ class SearchItemViewController: UIViewController, UITableViewDataSource,UITableV
                 ARViewController.products = products
                 ARViewController.productsID = productsID
                 ARViewController.shopListDic = shopListDic
+                ARViewController.countItens = countItens
             }
         if let ARScanViewController = segue.destination as? ARScanViewController {
             ARScanViewController.id = id
