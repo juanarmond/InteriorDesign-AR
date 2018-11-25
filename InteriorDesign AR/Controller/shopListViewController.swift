@@ -9,13 +9,16 @@
 import UIKit
 import Firebase
 
-class shopListViewController: UIViewController {
+class shopListViewController: UIViewController, UITableViewDataSource,UITableViewDelegate {
 
+    @IBOutlet weak var tableView: UITableView!
+    
     var db: Firestore!
     var item: String!
     var id: String!
     var products: [String]!
     var productsID: [String]!
+    var shopListDic : [Int: (String, Int, Double)] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,17 +56,31 @@ class shopListViewController: UIViewController {
             }
         }
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return shopListDic.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath )
+        cell.textLabel?.text = shopListDic[indexPath.row]!.0
+//            + "    " + "\(shopListDic[indexPath.row]!.1)" + "    " + "\(shopListDic[indexPath.row]!.2)"
+//        }
+        return cell
+    }
+    
+    
 
     @IBAction func goBack(_ sender: Any) {
         self.performSegue(withIdentifier: "searchItem", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let SearchItemViewController = segue.destination as? SearchItemViewController {
-            SearchItemViewController.id = id
-            SearchItemViewController.products = products
-            SearchItemViewController.productsID = productsID
-            
+           if let SearchItemViewController = segue.destination as? SearchItemViewController {
+                SearchItemViewController.id = id
+                SearchItemViewController.products = products
+                SearchItemViewController.productsID = productsID
+                SearchItemViewController.shopListDic = shopListDic
         }
     }
     /*

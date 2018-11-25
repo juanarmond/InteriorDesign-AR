@@ -25,11 +25,15 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
     
     var db: Firestore!
     var item: String!
+    var itemName: String!
     var id: String!
+    var quantity: Int = 1
     var cost: Double!
     var percentComplete: Double = 0
     var products: [String]!
     var productsID: [String]!
+    var shopListDic : [Int: (String, Int, Double)] = [:]
+    var countItens: Int = 0;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +80,7 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
             // A progress event occured
             self.percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount)
                 / Double(snapshot.progress!.totalUnitCount)
-            print(Float(self.percentComplete/100))
+//            print(Float(self.percentComplete/100))
             self.progressLabel.text = NSString(format: "%.0f", self.percentComplete) as String + "%"
             self.progressView.progress = Float(self.percentComplete/100)
         }
@@ -130,22 +134,62 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
         
     }
     
-    @IBAction func shopList(_ sender: Any) {
-        self.performSegue(withIdentifier: "shopList", sender: self)
+    @IBAction func addShopList(_ sender: Any) {
+        let totalCost = cost*Double(quantity)
+//        print("Shopping Item")
+        if (shopListDic.isEmpty) {
+            print("First Item")
+            showAlertAddedItem()
+            shopListDic = [countItens:(itemName,quantity, totalCost)]
+        }else {
+            for (key,(value,value2, value3)) in shopListDic {
+                if (value == itemName) {
+                    //Update item quantity
+                    showAlertUpdateItem()
+                    shopListDic[key] = (itemName, quantity,totalCost)
+                }else{
+                    //add new item
+                    print("Add new Item")
+                    countItens+=1
+                    showAlertAddedItem()
+                    shopListDic[countItens] = (itemName, quantity,totalCost)
+                }
+            }
+        }
+    }
+    
+    @IBAction func goShopList(_ sender: Any) {
+        if shopListDic.count>0 {
+            self.performSegue(withIdentifier: "shopList", sender: self)
+        }else{
+            showAlertAddItem()
+        }
+        for (key,(value,value2, value3)) in shopListDic {
+            print("Shopping List")
+            print("Index: \(key) Item:\(value) Quantity:\(value2) Cost:\(value3)")
+            print(shopListDic.count)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let SearchItemViewController = segue.destination as? SearchItemViewController {
-            SearchItemViewController.id = id
-            SearchItemViewController.products = products
-            SearchItemViewController.productsID = productsID
-            
+//        if  segue.identifier == "searchItem",
+          if let SearchItemViewController = segue.destination as? SearchItemViewController {
+                SearchItemViewController.id = id
+                SearchItemViewController.products = products
+                SearchItemViewController.productsID = productsID
+                SearchItemViewController.shopListDic = shopListDic
         }
-        if let shopListViewController = segue.destination as? shopListViewController {
-            shopListViewController.id = id
-            shopListViewController.products = products
-            shopListViewController.productsID = productsID
-            
+//        if  segue.identifier == "shopList",
+           if let shopListViewController = segue.destination as? shopListViewController {
+                shopListViewController.id = id
+                shopListViewController.products = products
+                shopListViewController.productsID = productsID
+                shopListViewController.shopListDic = shopListDic
+        }
+        for (key,(value,value2, value3)) in shopListDic {
+            print("Shopping List Added")
+//            print("Index: \(key) Item:\(value) Quantity:\(value2) Cost:\(value3)")
+            print(shopListDic.count)
         }
     }
     
@@ -158,6 +202,7 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
         product.getDocument{ (document, error) in
             if let document = document {
                 self.nameLabel.text = document.get("product") as? String
+                self.itemName = document.get("product") as? String
                 self.descriptionLabel.text = document.get("description") as? String
                 companyID = document.get("company ID") as? String
                 self.cost = document.get("cost") as? Double
@@ -204,9 +249,30 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
     
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
         quantityLabel.text = Int(sender.value).description
+        quantity = Int(sender.value)
         self.priceLabel.text = NSString(format: "£ %.02f", (self.cost! * Double(sender.value))) as String
     }
     
+    func showAlertAddItem() {
+        let alertController = UIAlertController(title: "Shopping List", message:
+            "Please add a least one item", preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
+
+    func showAlertAddedItem() {
+        let alertController = UIAlertController(title: "Item Added", message:
+            "This item has been added to your shopping list", preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func showAlertUpdateItem() {
+        let alertController = UIAlertController(title: "Item Updated", message:
+            "This item has been updated", preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 

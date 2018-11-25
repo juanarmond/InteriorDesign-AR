@@ -14,9 +14,6 @@ class SearchItemViewController: UIViewController, UITableViewDataSource,UITableV
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    /** @var handle
-     @brief The handler for the auth state listener, to allow cancelling later.
-     */
     var id: String!
     var db: Firestore!
     var products: [String]!
@@ -28,6 +25,7 @@ class SearchItemViewController: UIViewController, UITableViewDataSource,UITableV
     var searching: Bool = false
     var item: String!
     var index: Int!
+    var shopListDic : [Int: (String, Int, Double)] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -186,8 +184,8 @@ class SearchItemViewController: UIViewController, UITableViewDataSource,UITableV
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if  segue.identifier == "ar",
-            let ARViewController = segue.destination as? ARViewController{
+//        if  segue.identifier == "ar",
+           if let ARViewController = segue.destination as? ARViewController{
                 index = tableView.indexPathForSelectedRow?.row
                 item = self.sortedID[self.index]
                 print(item!)
@@ -195,25 +193,18 @@ class SearchItemViewController: UIViewController, UITableViewDataSource,UITableV
                 ARViewController.id = id
                 ARViewController.products = products
                 ARViewController.productsID = productsID
+                ARViewController.shopListDic = shopListDic
             }
         if let ARScanViewController = segue.destination as? ARScanViewController {
             ARScanViewController.id = id
+            ARScanViewController.products = products
+            ARScanViewController.productsID = productsID
         }
     }
 
     @IBAction func goBack(_ sender: Any) {
         self.performSegue(withIdentifier: "arScan", sender: self)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 

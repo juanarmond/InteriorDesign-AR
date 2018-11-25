@@ -54,8 +54,10 @@ class ScanViewController: UIViewController, ARSCNViewDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let ARScanViewController = segue.destination as? ARScanViewController {
+//        if  segue.identifier == "arScan",
+         if let ARScanViewController = segue.destination as? ARScanViewController {
             ARScanViewController.id = id
+            print(id)
         }
     }
     

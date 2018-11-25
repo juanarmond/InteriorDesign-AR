@@ -87,13 +87,16 @@ class ARScanViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let SearchItemViewController = segue.destination as? SearchItemViewController {
-            SearchItemViewController.id = id
-            SearchItemViewController.products = products
-            SearchItemViewController.productsID = productsID
+//        if  segue.identifier == "searchItem",
+          if  let SearchItemViewController = segue.destination as? SearchItemViewController {
+                SearchItemViewController.id = id
+                SearchItemViewController.products = products
+                SearchItemViewController.productsID = productsID
         }
-        if let ScanViewController = segue.destination as? ScanViewController {
+//        if  segue.identifier == "arScan",
+          if  let ScanViewController = segue.destination as? ScanViewController {
             ScanViewController.id = id
+            print(id)
         }
     }
     
