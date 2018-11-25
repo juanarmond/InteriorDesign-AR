@@ -79,7 +79,16 @@ class shopListViewController: UIViewController, UITableViewDataSource,UITableVie
         return cell
     }
     
-
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            // delete item at indexPath
+            self.shopListDic.removeValue(forKey: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            print(self.shopListDic)
+        }
+        return [delete]
+    }
     
     @IBAction func goBack(_ sender: Any) {
         self.performSegue(withIdentifier: "searchItem", sender: self)
