@@ -25,6 +25,7 @@ class pdfCreatorViewController: UIViewController, QLPreviewControllerDataSource 
     let day = Calendar.current.component(.day, from: Date())
     let month = Calendar.current.component(.month, from: Date())
     let year = Calendar.current.component(.year, from: Date())
+    var shopL: [[String]] = []
     
 //    let A4paperSize = CGSize(width: 595, height: 842)
     let pdf = SimplePDF(pageSize: CGSize(width: 595, height: 842))
@@ -36,12 +37,22 @@ class pdfCreatorViewController: UIViewController, QLPreviewControllerDataSource 
         // Do any additional setup after loading the view.
         connectFirebase()
         getCompanyAvatar()
+        shop()
     }
     
     func connectFirebase() {
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
         db = Firestore.firestore()
+    }
+    
+    func shop() {
+        for item in shopListDic {
+            let name = item.value.0
+            let qnt = "\(item.value.1)"
+            let cost = NSString(format: "£ %.02f", item.value.2) as String
+            shopL.append([name, qnt, cost])
+        }
     }
 
     
@@ -75,33 +86,49 @@ class pdfCreatorViewController: UIViewController, QLPreviewControllerDataSource 
         pdf.addText("Invoice")
         let date = "Date: \(day)/\(month)/\(year)"
         pdf.addText(date)
-        pdf.addLineSpace(30)
-
-        //Client Info
-        pdf.addLineSeparator()
-        pdf.setContentAlignment(.left)
-        pdf.addText(client)
-        pdf.addText(clientEmail)
-        
+        pdf.addLineSpace(10)
         //Company Info
-        pdf.addLineSpace(-3)
-        pdf.setContentAlignment(.right)
-        pdf.addImage(companyAvatar)
-        pdf.addText("Sofa and More")
-        pdf.addLineSeparator()
-        pdf.addLineSpace(30)
-        
 
+        pdf.setContentAlignment(.center)
+        pdf.addImage(companyAvatar)
+        pdf.setContentAlignment(.left)
+        pdf.addLineSpace(10)
+        pdf.addText("Sofa and More")
+        pdf.addText("Address: ")
+        pdf.addText("Unit 5, Phoenix Trading Estate")
+        pdf.addText("Bilton Road, Perivale")
+        pdf.addText("Greenford, UB6-7DZ")
+        pdf.addLineSpace(20)
         
-        let tableDef = TableDefinition(alignments: [.left, .left],
-                                       columnWidths: [100, 300],
-                                       fonts: [UIFont.systemFont(ofSize: 20),
-                                               UIFont.systemFont(ofSize: 16)],
+        //Client Info
+//        pdf.setContentAlignment(.right)
+        pdf.addText("Name: " + client)
+        pdf.addText("Email: " + clientEmail)
+        pdf.addLineSpace(30)
+        pdf.addLineSeparator()
+        
+        pdf.setContentAlignment(.left)
+        
+        let tableDef = TableDefinition(alignments: [.left, .left, .left],
+                                       columnWidths: [250, 250, 250],
+                                       fonts: [UIFont.systemFont(ofSize: 25), UIFont.systemFont(ofSize: 25), UIFont.systemFont(ofSize: 25)],
                                        textColors: [UIColor.black,
-                                                    UIColor.blue])
-        let dataArray = [["Test1", "Test2"],["Test3", "Test4"]]
+                                                    UIColor.black, UIColor.black])
+        let dataArray = [["Item Name", "Quantity", "Cost"]]
         
-        pdf.addTable(dataArray.count, columnCount: 2, rowHeight: 25, tableLineWidth: 0, tableDefinition: tableDef, dataArray: dataArray)
+        pdf.addTable(dataArray.count, columnCount: 3, rowHeight: 25, tableLineWidth: 0, tableDefinition: tableDef, dataArray: dataArray)
+        pdf.addLineSeparator()
+        pdf.addLineSpace(15)
+        let tableDef2 = TableDefinition(alignments: [.left, .center, .right],
+                                       columnWidths: [250, 250, 200],
+                                       fonts: [UIFont.systemFont(ofSize: 20), UIFont.systemFont(ofSize: 20), UIFont.systemFont(ofSize: 20)],
+                                       textColors: [UIColor.black,
+                                                    UIColor.black, UIColor.black])
+        
+        pdf.addTable(shopL.count, columnCount: 3, rowHeight: 25, tableLineWidth: 0, tableDefinition: tableDef2, dataArray: shopL)
+        pdf.addLineSpace(15)
+        pdf.addLineSeparator()
+        
         
         let pdfData = pdf.generatePDFdata()
         
