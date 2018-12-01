@@ -19,7 +19,9 @@ class shopListViewController: UIViewController, UITableViewDataSource,UITableVie
     var products: [String]!
     var productsID: [String]!
     var shopListDic : [Int: (String, Int, Double)] = [:]
-     var countItens: Int = 0;
+    var countItens: Int = 0;
+    var client: String!
+    var clientEmail: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,14 +97,29 @@ class shopListViewController: UIViewController, UITableViewDataSource,UITableVie
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-           if let SearchItemViewController = segue.destination as? SearchItemViewController {
-                SearchItemViewController.id = id
-                SearchItemViewController.products = products
-                SearchItemViewController.productsID = productsID
-                SearchItemViewController.shopListDic = shopListDic
-                SearchItemViewController.countItens = countItens
+        if let SearchItemViewController = segue.destination as? SearchItemViewController {
+            SearchItemViewController.id = id
+            SearchItemViewController.products = products
+            SearchItemViewController.productsID = productsID
+            SearchItemViewController.shopListDic = shopListDic
+            SearchItemViewController.countItens = countItens
+            SearchItemViewController.client = client
+            SearchItemViewController.clientEmail = clientEmail
         }
+        
+        if let pdfCreatorViewController = segue.destination as? pdfCreatorViewController {
+            pdfCreatorViewController.id = id
+            pdfCreatorViewController.shopListDic = shopListDic
+            pdfCreatorViewController.client = client
+            pdfCreatorViewController.clientEmail = clientEmail
+        }
+        
     }
+    
+    @IBAction func buyItem(_ sender: Any) {
+        self.performSegue(withIdentifier: "pdfCreator", sender: self)
+    }
+    
     /*
     // MARK: - Navigation
 

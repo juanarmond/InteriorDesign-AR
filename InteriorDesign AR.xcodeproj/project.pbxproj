@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		310EF7F121737F9600B95F33 /* SearchItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310EF7F021737F9600B95F33 /* SearchItemViewController.swift */; };
+		3115839C21B2CED3004C21C4 /* pdfCreatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3115839B21B2CED3004C21C4 /* pdfCreatorViewController.swift */; };
 		31436B012193018E00E7DAD8 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31436B002193018E00E7DAD8 /* ScanViewController.swift */; };
 		31436B032193056000E7DAD8 /* shopListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31436B022193056000E7DAD8 /* shopListViewController.swift */; };
 		31875B87218DC23500FA5966 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31875B86218DC23500FA5966 /* ARViewController.swift */; };
@@ -54,6 +55,7 @@
 		230A94EECC4FC1AA2B216E69 /* Pods-InteriorDesign AR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InteriorDesign AR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InteriorDesign AR/Pods-InteriorDesign AR.debug.xcconfig"; sourceTree = "<group>"; };
 		2BCA23553F885AA31B782B99 /* Pods_InteriorDesign_AR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InteriorDesign_AR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		310EF7F021737F9600B95F33 /* SearchItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemViewController.swift; sourceTree = "<group>"; };
+		3115839B21B2CED3004C21C4 /* pdfCreatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pdfCreatorViewController.swift; sourceTree = "<group>"; };
 		31436B002193018E00E7DAD8 /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		31436B022193056000E7DAD8 /* shopListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shopListViewController.swift; sourceTree = "<group>"; };
 		31875B86218DC23500FA5966 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				31875B88218DDD2D00FA5966 /* ARScanViewController.swift */,
 				31436B002193018E00E7DAD8 /* ScanViewController.swift */,
 				31436B022193056000E7DAD8 /* shopListViewController.swift */,
+				3115839B21B2CED3004C21C4 /* pdfCreatorViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SimplePDF/SimplePDF.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
@@ -427,6 +431,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimplePDF.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
@@ -475,6 +480,7 @@
 				310EF7F121737F9600B95F33 /* SearchItemViewController.swift in Sources */,
 				31B925AC2160C7D1004EEB56 /* CreateAccountViewController.swift in Sources */,
 				31875B87218DC23500FA5966 /* ARViewController.swift in Sources */,
+				3115839C21B2CED3004C21C4 /* pdfCreatorViewController.swift in Sources */,
 				31D43F522185A94700FF3170 /* CompanyAccountViewController.swift in Sources */,
 				31A65C2E21592620006CA768 /* ViewController.swift in Sources */,
 				31436B012193018E00E7DAD8 /* ScanViewController.swift in Sources */,

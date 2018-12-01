@@ -16,6 +16,8 @@ class ARScanViewController: UIViewController {
     var id: String!
     var products: [String] = []
     var productsID: [String] = []
+    var client: String!
+    var clientEmail: String!
     
     @IBOutlet weak var avatarView: UIImageView!
     
@@ -43,6 +45,8 @@ class ARScanViewController: UIViewController {
                 let first = document.get("first") as? String
                 let last = document.get("last") as? String
                 self.nameLabel.text = first! + " " + last!
+                self.client = first! + " " + last!
+                self.clientEmail = document.get("email") as? String
                 print(first! + " " + last!)
             } else {
                 print("Document does not exist in cache")
@@ -100,6 +104,8 @@ class ARScanViewController: UIViewController {
                 SearchItemViewController.id = id
                 SearchItemViewController.products = products
                 SearchItemViewController.productsID = productsID
+                SearchItemViewController.client = client
+                SearchItemViewController.clientEmail = clientEmail
         }
 //        if  segue.identifier == "arScan",
           if  let ScanViewController = segue.destination as? ScanViewController {

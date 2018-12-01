@@ -386,6 +386,67 @@ Get Inspire, Shop products and Find Professionals</string>
             </objects>
             <point key="canvasLocation" x="4314" y="-753"/>
         </scene>
+        <!--Pdf Creator View Controller-->
+        <scene sceneID="dpT-M0-mTc">
+            <objects>
+                <viewController id="8yl-OE-cZk" customClass="pdfCreatorViewController" customModule="InteriorDesign_AR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cyo-JB-aUA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank for Shopping with us!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afB-Sx-pRW">
+                                <rect key="frame" x="20" y="104" width="374" height="60"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NBc-wQ-24U">
+                                <rect key="frame" x="20" y="612" width="374" height="39"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <accessibility key="accessibilityConfiguration" label="signIn"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                <state key="normal" title="Start Over">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="startOver:" destination="8yl-OE-cZk" eventType="touchUpInside" id="6F2-PW-jjC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qwT-vC-hHD">
+                                <rect key="frame" x="20" y="439" width="374" height="39"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <accessibility key="accessibilityConfiguration" label="signIn"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                <state key="normal" title="Get Invoice">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="getPDF:" destination="8yl-OE-cZk" eventType="touchUpInside" id="jxw-IW-KkO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="afB-Sx-pRW" firstAttribute="top" secondItem="DfT-bs-ubl" secondAttribute="top" constant="84" id="5Xp-Uf-B4B"/>
+                            <constraint firstAttribute="bottom" secondItem="qwT-vC-hHD" secondAttribute="bottom" constant="258" id="9Kr-Ht-Dm1"/>
+                            <constraint firstItem="afB-Sx-pRW" firstAttribute="trailing" secondItem="qwT-vC-hHD" secondAttribute="trailing" id="OXQ-a8-eft"/>
+                            <constraint firstItem="DfT-bs-ubl" firstAttribute="bottom" secondItem="NBc-wQ-24U" secondAttribute="bottom" constant="85" id="UtT-Rc-yhV"/>
+                            <constraint firstItem="afB-Sx-pRW" firstAttribute="leading" secondItem="cyo-JB-aUA" secondAttribute="leadingMargin" id="YCI-pB-eUo"/>
+                            <constraint firstItem="afB-Sx-pRW" firstAttribute="trailing" secondItem="cyo-JB-aUA" secondAttribute="trailingMargin" id="e0o-K7-XLY"/>
+                            <constraint firstItem="qwT-vC-hHD" firstAttribute="leading" secondItem="NBc-wQ-24U" secondAttribute="leading" id="e0p-PT-EEJ"/>
+                            <constraint firstItem="qwT-vC-hHD" firstAttribute="trailing" secondItem="NBc-wQ-24U" secondAttribute="trailing" id="k8P-0b-7df"/>
+                            <constraint firstItem="afB-Sx-pRW" firstAttribute="leading" secondItem="qwT-vC-hHD" secondAttribute="leading" id="wAB-jD-fG0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DfT-bs-ubl"/>
+                    </view>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="startOver" id="csO-Qm-ehm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="He4-Zs-i4z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4698.5507246376819" y="174.45652173913044"/>
+        </scene>
         <!--Company Account View Controller-->
         <scene sceneID="8jt-de-sru">
             <objects>
@@ -1030,6 +1091,9 @@ Get Inspire, Shop products and Find Professionals</string>
                                 <state key="normal" title="Buy Item">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="buyItem:" destination="ONS-HL-EkF" eventType="touchUpInside" id="6wR-6h-wGY"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mTE-21-HEP">
                                 <rect key="frame" x="0.0" y="96" width="414" height="489"/>
@@ -1107,6 +1171,7 @@ Get Inspire, Shop products and Find Professionals</string>
                     <connections>
                         <outlet property="tableView" destination="mTE-21-HEP" id="mWb-Kg-sXv"/>
                         <segue destination="chM-TF-5hX" kind="presentation" identifier="searchItem" id="X23-o7-eot"/>
+                        <segue destination="8yl-OE-cZk" kind="presentation" identifier="pdfCreator" id="krh-gz-h0f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zo5-1Z-d4r" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1254,10 +1319,11 @@ Get Inspire, Shop products and Find Professionals</string>
         <image name="welcome" width="2484" height="1656"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Iek-Rn-iVG"/>
-        <segue reference="X23-o7-eot"/>
+        <segue reference="EwG-VH-Ypm"/>
+        <segue reference="8AS-Rw-itL"/>
         <segue reference="Qhk-hL-ATh"/>
         <segue reference="oS4-An-rgo"/>
-        <segue reference="JBs-OZ-aXJ"/>
+        <segue reference="PU0-TC-m3D"/>
+        <segue reference="csO-Qm-ehm"/>
     </inferredMetricsTieBreakers>
 </document>

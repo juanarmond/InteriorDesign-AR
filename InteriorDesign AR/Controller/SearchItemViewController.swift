@@ -27,6 +27,8 @@ class SearchItemViewController: UIViewController, UITableViewDataSource,UITableV
     var index: Int!
     var shopListDic : [Int: (String, Int, Double)] = [:]
     var countItens: Int = 0;
+    var client: String!
+    var clientEmail: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -196,11 +198,15 @@ class SearchItemViewController: UIViewController, UITableViewDataSource,UITableV
                 ARViewController.productsID = productsID
                 ARViewController.shopListDic = shopListDic
                 ARViewController.countItens = countItens
+                ARViewController.client = client
+                ARViewController.clientEmail = clientEmail
             }
         if let ARScanViewController = segue.destination as? ARScanViewController {
             ARScanViewController.id = id
             ARScanViewController.products = products
             ARScanViewController.productsID = productsID
+            ARScanViewController.client = client
+            ARScanViewController.clientEmail = clientEmail
         }
     }
 

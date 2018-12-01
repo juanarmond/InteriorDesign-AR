@@ -34,6 +34,8 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
     var productsID: [String]!
     var shopListDic : [Int: (String, Int, Double)] = [:]
     var countItens: Int = 0;
+    var client: String!
+    var clientEmail: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,7 +82,7 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
             // A progress event occured
             self.percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount)
                 / Double(snapshot.progress!.totalUnitCount)
-//            print(Float(self.percentComplete/100))
+            print(Float(self.percentComplete/100))
             self.progressLabel.text = NSString(format: "%.0f", self.percentComplete) as String + "%"
             self.progressView.progress = Float(self.percentComplete/100)
         }
@@ -188,6 +190,8 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
                 SearchItemViewController.productsID = productsID
                 SearchItemViewController.shopListDic = shopListDic
                 SearchItemViewController.countItens = countItens
+                SearchItemViewController.client = client
+                SearchItemViewController.clientEmail = clientEmail
         }
 //        if  segue.identifier == "shopList",
            if let shopListViewController = segue.destination as? shopListViewController {
@@ -196,6 +200,8 @@ class ARViewController: UIViewController, QLPreviewControllerDataSource{
                 shopListViewController.productsID = productsID
                 shopListViewController.shopListDic = shopListDic
                 shopListViewController.countItens = countItens
+                shopListViewController.client = client
+                shopListViewController.clientEmail = clientEmail
         }
         for (key,(value,value2, value3)) in shopListDic {
             print("Shopping List Added")
