@@ -59,7 +59,6 @@ class pdfCreatorViewController: UIViewController, QLPreviewControllerDataSource 
         
         totalL.append(["Total", NSString(format: "£ %.02f", total) as String])
     }
-
     
     func getCompanyAvatar(){
         // Get a reference to the storage service using the default Firebase App
@@ -67,8 +66,8 @@ class pdfCreatorViewController: UIViewController, QLPreviewControllerDataSource 
         // Create a storage reference from our storage service
         let storageRef = storage.reference()
         // Create a reference to the file you want to download
-//        let avatarRef = storageRef.child("avatar/\(company!)")
-        let avatarRef = storageRef.child("avatar/qdc5StI534Q4Np0uAR8g")
+        let avatarRef = storageRef.child("avatar/\(companyID!)")
+//        let avatarRef = storageRef.child("avatar/qdc5StI534Q4Np0uAR8g")
         
         // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
         avatarRef.getData(maxSize: 1 * 1024 * 1024) { data, error in

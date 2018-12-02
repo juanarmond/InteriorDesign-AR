@@ -23,6 +23,7 @@ class shopListViewController: UIViewController, UITableViewDataSource,UITableVie
     var client: String!
     var clientEmail: String!
     var total: Double = 0;
+    var companyID: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,7 @@ class shopListViewController: UIViewController, UITableViewDataSource,UITableVie
         connectFirebase()
         getItems()
         getTotal()
+        getCompanyID()
     }
     
     func connectFirebase() {
@@ -114,6 +116,7 @@ class shopListViewController: UIViewController, UITableViewDataSource,UITableVie
             pdfCreatorViewController.shopListDic = shopListDic
             pdfCreatorViewController.client = client
             pdfCreatorViewController.clientEmail = clientEmail
+            pdfCreatorViewController.companyID = companyID
         }
         
     }
@@ -133,6 +136,21 @@ class shopListViewController: UIViewController, UITableViewDataSource,UITableVie
             "Total is \(NSString(format: "%.02f",total))", preferredStyle: UIAlertController.Style.alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func getCompanyID() {
+        db = Firestore.firestore()
+        for item in productsID {
+            let product = db.collection("products").document(item)
+            product.getDocument{ (document, error) in
+                if let document = document {
+                    self.companyID = document.get("company ID") as? String
+                    print("Company ID", self.companyID)
+                } else {
+                    print("Document does not exist in cache")
+                }
+            }
+        }
     }
     
     /*
