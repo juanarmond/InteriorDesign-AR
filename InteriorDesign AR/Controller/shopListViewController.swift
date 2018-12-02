@@ -22,6 +22,7 @@ class shopListViewController: UIViewController, UITableViewDataSource,UITableVie
     var countItens: Int = 0;
     var client: String!
     var clientEmail: String!
+    var total: Double = 0;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,7 @@ class shopListViewController: UIViewController, UITableViewDataSource,UITableVie
         // Do any additional setup after loading the view.
         connectFirebase()
         getItems()
+        getTotal()
     }
     
     func connectFirebase() {
@@ -77,7 +79,7 @@ class shopListViewController: UIViewController, UITableViewDataSource,UITableVie
         let pound : String = "£".padding(toLength: 8-costF.count, withPad: " ", startingAt: 0)
         cell.textLabel?.text = shopListDic[indexPath.row]!.0.padding(toLength: 20, withPad: " ", startingAt: 0)
         cell.detailTextLabel?.text = qty + pound + costF
-       
+        showTotalItem()
         return cell
     }
     
@@ -118,6 +120,19 @@ class shopListViewController: UIViewController, UITableViewDataSource,UITableVie
     
     @IBAction func buyItem(_ sender: Any) {
         self.performSegue(withIdentifier: "pdfCreator", sender: self)
+    }
+    
+    func getTotal() {
+        for item in shopListDic {
+            total += item.value.2
+        }
+    }
+    
+    func showTotalItem() {
+        let alertController = UIAlertController(title: "Shopping List", message:
+            "Total is \(NSString(format: "%.02f",total))", preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
+        self.present(alertController, animated: true, completion: nil)
     }
     
     /*

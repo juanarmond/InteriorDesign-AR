@@ -26,6 +26,7 @@ class pdfCreatorViewController: UIViewController, QLPreviewControllerDataSource 
     let month = Calendar.current.component(.month, from: Date())
     let year = Calendar.current.component(.year, from: Date())
     var shopL: [[String]] = []
+    var totalL: [[String]] = []
     
 //    let A4paperSize = CGSize(width: 595, height: 842)
     let pdf = SimplePDF(pageSize: CGSize(width: 595, height: 842))
@@ -47,12 +48,16 @@ class pdfCreatorViewController: UIViewController, QLPreviewControllerDataSource 
     }
     
     func shop() {
+        var total: Double = 0
         for item in shopListDic {
             let name = item.value.0
             let qnt = "\(item.value.1)"
             let cost = NSString(format: "£ %.02f", item.value.2) as String
             shopL.append([name, qnt, cost])
+            total += item.value.2
         }
+        
+        totalL.append(["Total", NSString(format: "£ %.02f", total) as String])
     }
 
     
@@ -92,13 +97,13 @@ class pdfCreatorViewController: UIViewController, QLPreviewControllerDataSource 
         pdf.setContentAlignment(.center)
         pdf.addImage(companyAvatar)
         pdf.setContentAlignment(.left)
-        pdf.addLineSpace(10)
+        pdf.addLineSpace(20)
         pdf.addText("Sofa and More")
-        pdf.addText("Address: ")
+        pdf.addLineSpace(1)
         pdf.addText("Unit 5, Phoenix Trading Estate")
         pdf.addText("Bilton Road, Perivale")
         pdf.addText("Greenford, UB6-7DZ")
-        pdf.addLineSpace(20)
+        pdf.addLineSpace(30)
         
         //Client Info
 //        pdf.setContentAlignment(.right)
@@ -109,8 +114,8 @@ class pdfCreatorViewController: UIViewController, QLPreviewControllerDataSource 
         
         pdf.setContentAlignment(.left)
         
-        let tableDef = TableDefinition(alignments: [.left, .left, .left],
-                                       columnWidths: [250, 250, 250],
+        let tableDef = TableDefinition(alignments: [.left, .left, .center],
+                                       columnWidths: [210, 260, 200],
                                        fonts: [UIFont.systemFont(ofSize: 25), UIFont.systemFont(ofSize: 25), UIFont.systemFont(ofSize: 25)],
                                        textColors: [UIColor.black,
                                                     UIColor.black, UIColor.black])
@@ -119,8 +124,8 @@ class pdfCreatorViewController: UIViewController, QLPreviewControllerDataSource 
         pdf.addTable(dataArray.count, columnCount: 3, rowHeight: 25, tableLineWidth: 0, tableDefinition: tableDef, dataArray: dataArray)
         pdf.addLineSeparator()
         pdf.addLineSpace(15)
-        let tableDef2 = TableDefinition(alignments: [.left, .center, .right],
-                                       columnWidths: [250, 250, 200],
+        let tableDef2 = TableDefinition(alignments: [.left, .right, .right],
+                                       columnWidths: [250, 200, 100],
                                        fonts: [UIFont.systemFont(ofSize: 20), UIFont.systemFont(ofSize: 20), UIFont.systemFont(ofSize: 20)],
                                        textColors: [UIColor.black,
                                                     UIColor.black, UIColor.black])
@@ -128,7 +133,12 @@ class pdfCreatorViewController: UIViewController, QLPreviewControllerDataSource 
         pdf.addTable(shopL.count, columnCount: 3, rowHeight: 25, tableLineWidth: 0, tableDefinition: tableDef2, dataArray: shopL)
         pdf.addLineSpace(15)
         pdf.addLineSeparator()
+        pdf.addLineSpace(25)
         
+        let tableDef3 = TableDefinition(alignments: [.left, .right], columnWidths: [440, 100], fonts: [UIFont.systemFont(ofSize: 25), UIFont.systemFont(ofSize: 25)], textColors: [UIColor.red, UIColor.red])
+        
+        pdf.addTable(totalL.count, columnCount: 2, rowHeight: 25, tableLineWidth: 0, tableDefinition: tableDef3, dataArray: totalL)
+        pdf.addLineSeparator()
         
         let pdfData = pdf.generatePDFdata()
         
